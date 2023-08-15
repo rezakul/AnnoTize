@@ -1,0 +1,37 @@
+[
+    {
+        "type": "Configuration",
+        "id": "95a3646e-1583-47ba-95c0-fbbdffadfe9d",
+        "creator": "annotize",
+        "documents": [
+            "e16bbee6-1ffe-428d-8b61-8e4531ee494e"
+        ]
+    },
+    {
+        "type": "Document",
+        "id": "e16bbee6-1ffe-428d-8b61-8e4531ee494e",
+        "file": "1311.5471.html",
+        "name": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471"
+    },
+    {
+        "type": "TagSet",
+        "id": "8d247514-5ee1-4586-aa0b-f3f46a3863e4",
+        "belongsTo_Rev": [
+            "a3aa20aa-64a1-4b58-b8c3-fa8bfd79c23d",
+            "ce81d6ef-0372-4ff0-a749-3d5262409231"
+        ],
+        "label": "Declaration"
+    },
+    {
+        "type": "Tag",
+        "id": "a3aa20aa-64a1-4b58-b8c3-fa8bfd79c23d",
+        "belongsTo": "8d247514-5ee1-4586-aa0b-f3f46a3863e4",
+        "label": "Existential"
+    },
+    {
+        "type": "Tag",
+        "id": "ce81d6ef-0372-4ff0-a749-3d5262409231",
+        "belongsTo": "8d247514-5ee1-4586-aa0b-f3f46a3863e4",
+        "label": "Universal"
+    }
+]

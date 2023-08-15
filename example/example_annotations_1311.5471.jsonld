@@ -1,0 +1,818 @@
+[
+    {
+        "type": "Annotation",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.1",
+        "target": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.1",
+        "body": {
+            "type": "IdentifierDeclaration",
+            "Annotation-Tag": {
+                "value": "ce81d6ef-0372-4ff0-a749-3d5262409231"
+            }
+        },
+        "creator": "annotize"
+    },
+    {
+        "type": "Annotation",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.2",
+        "target": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.2",
+        "body": {
+            "type": "IdentifierDeclaration",
+            "Annotation-Tag": {
+                "value": "ce81d6ef-0372-4ff0-a749-3d5262409231"
+            }
+        },
+        "creator": "annotize"
+    },
+    {
+        "type": "Annotation",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.3",
+        "target": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.3",
+        "body": {
+            "type": "IdentifierDeclaration",
+            "Annotation-Tag": {
+                "value": "ce81d6ef-0372-4ff0-a749-3d5262409231"
+            }
+        },
+        "creator": "annotize"
+    },
+    {
+        "type": "Annotation",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.4",
+        "target": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.4",
+        "body": {
+            "type": "IdentifierOccurrence",
+            "Identifier": {
+                "value": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.3"
+            }
+        },
+        "creator": "annotize"
+    },
+    {
+        "type": "Annotation",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.5",
+        "target": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.5",
+        "body": {
+            "type": "IdentifierOccurrence",
+            "Identifier": {
+                "value": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.3"
+            }
+        },
+        "creator": "annotize"
+    },
+    {
+        "type": "Annotation",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.6",
+        "target": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.6",
+        "body": {
+            "type": "IdentifierOccurrence",
+            "Identifier": {
+                "value": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.3"
+            }
+        },
+        "creator": "annotize"
+    },
+    {
+        "type": "Annotation",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.7",
+        "target": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.7",
+        "body": {
+            "type": "IdentifierOccurrence",
+            "Identifier": {
+                "value": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.3"
+            }
+        },
+        "creator": "annotize"
+    },
+    {
+        "type": "Annotation",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.8",
+        "target": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.8",
+        "body": {
+            "type": "IdentifierOccurrence",
+            "Identifier": {
+                "value": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.3"
+            }
+        },
+        "creator": "annotize"
+    },
+    {
+        "type": "Annotation",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.9",
+        "target": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.9",
+        "body": {
+            "type": "IdentifierOccurrence",
+            "Identifier": {
+                "value": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.3"
+            }
+        },
+        "creator": "annotize"
+    },
+    {
+        "type": "Annotation",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.10",
+        "target": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.10",
+        "body": {
+            "type": "IdentifierOccurrence",
+            "Identifier": {
+                "value": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.3"
+            }
+        },
+        "creator": "annotize"
+    },
+    {
+        "type": "Annotation",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.11",
+        "target": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.11",
+        "body": {
+            "type": "IdentifierOccurrence",
+            "Identifier": {
+                "value": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.1"
+            }
+        },
+        "creator": "annotize"
+    },
+    {
+        "type": "Annotation",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.12",
+        "target": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.12",
+        "body": {
+            "type": "IdentifierOccurrence",
+            "Identifier": {
+                "value": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.1"
+            }
+        },
+        "creator": "annotize"
+    },
+    {
+        "type": "Annotation",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.13",
+        "target": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.13",
+        "body": {
+            "type": "IdentifierOccurrence",
+            "Identifier": {
+                "value": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.1"
+            }
+        },
+        "creator": "annotize"
+    },
+    {
+        "type": "Annotation",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.14",
+        "target": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.14",
+        "body": {
+            "type": "IdentifierOccurrence",
+            "Identifier": {
+                "value": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.2"
+            }
+        },
+        "creator": "annotize"
+    },
+    {
+        "type": "Annotation",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.15",
+        "target": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.15",
+        "body": {
+            "type": "IdentifierOccurrence",
+            "Identifier": {
+                "value": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.2"
+            }
+        },
+        "creator": "annotize"
+    },
+    {
+        "type": "Annotation",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.16",
+        "target": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.16",
+        "body": {
+            "type": "IdentifierOccurrence",
+            "Identifier": {
+                "value": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.2"
+            }
+        },
+        "creator": "annotize"
+    },
+    {
+        "type": "Annotation",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.17",
+        "target": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.17",
+        "body": {
+            "type": "IdentifierOccurrence",
+            "Identifier": {
+                "value": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.2"
+            }
+        },
+        "creator": "annotize"
+    },
+    {
+        "type": "Annotation",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.18",
+        "target": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.18",
+        "body": {
+            "type": "IdentifierDeclaration",
+            "Annotation-Tag": {
+                "value": "ce81d6ef-0372-4ff0-a749-3d5262409231"
+            }
+        },
+        "creator": "annotize"
+    },
+    {
+        "type": "Annotation",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.19",
+        "target": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.19",
+        "body": {
+            "type": "IdentifierDeclaration",
+            "Annotation-Tag": {
+                "value": "ce81d6ef-0372-4ff0-a749-3d5262409231"
+            }
+        },
+        "creator": "annotize"
+    },
+    {
+        "type": "Annotation",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.20",
+        "target": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.20",
+        "body": {
+            "type": "IdentifierDeclaration",
+            "Annotation-Tag": {
+                "value": "ce81d6ef-0372-4ff0-a749-3d5262409231"
+            }
+        },
+        "creator": "annotize"
+    },
+    {
+        "type": "Annotation",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.21",
+        "target": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.21",
+        "body": {
+            "type": "IdentifierOccurrence",
+            "Identifier": {
+                "value": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.20"
+            }
+        },
+        "creator": "annotize"
+    },
+    {
+        "type": "Annotation",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.22",
+        "target": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.22",
+        "body": {
+            "type": "IdentifierOccurrence",
+            "Identifier": {
+                "value": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.20"
+            }
+        },
+        "creator": "annotize"
+    },
+    {
+        "type": "Annotation",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.23",
+        "target": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.23",
+        "body": {
+            "type": "IdentifierOccurrence",
+            "Identifier": {
+                "value": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.20"
+            }
+        },
+        "creator": "annotize"
+    },
+    {
+        "type": "Annotation",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.24",
+        "target": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.24",
+        "body": {
+            "type": "IdentifierOccurrence",
+            "Identifier": {
+                "value": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.20"
+            }
+        },
+        "creator": "annotize"
+    },
+    {
+        "type": "Annotation",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.25",
+        "target": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.25",
+        "body": {
+            "type": "IdentifierOccurrence",
+            "Identifier": {
+                "value": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.20"
+            }
+        },
+        "creator": "annotize"
+    },
+    {
+        "type": "Annotation",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.26",
+        "target": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.26",
+        "body": {
+            "type": "IdentifierOccurrence",
+            "Identifier": {
+                "value": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.20"
+            }
+        },
+        "creator": "annotize"
+    },
+    {
+        "type": "Annotation",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.27",
+        "target": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.27",
+        "body": {
+            "type": "IdentifierOccurrence",
+            "Identifier": {
+                "value": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.20"
+            }
+        },
+        "creator": "annotize"
+    },
+    {
+        "type": "Annotation",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.28",
+        "target": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.28",
+        "body": {
+            "type": "IdentifierOccurrence",
+            "Identifier": {
+                "value": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.18"
+            }
+        },
+        "creator": "annotize"
+    },
+    {
+        "type": "Annotation",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.29",
+        "target": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.29",
+        "body": {
+            "type": "IdentifierOccurrence",
+            "Identifier": {
+                "value": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.18"
+            }
+        },
+        "creator": "annotize"
+    },
+    {
+        "type": "Annotation",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.30",
+        "target": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.30",
+        "body": {
+            "type": "IdentifierOccurrence",
+            "Identifier": {
+                "value": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.18"
+            }
+        },
+        "creator": "annotize"
+    },
+    {
+        "type": "Annotation",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.31",
+        "target": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.31",
+        "body": {
+            "type": "IdentifierOccurrence",
+            "Identifier": {
+                "value": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.19"
+            }
+        },
+        "creator": "annotize"
+    },
+    {
+        "type": "Annotation",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.32",
+        "target": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.32",
+        "body": {
+            "type": "IdentifierOccurrence",
+            "Identifier": {
+                "value": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.19"
+            }
+        },
+        "creator": "annotize"
+    },
+    {
+        "type": "Annotation",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.33",
+        "target": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.33",
+        "body": {
+            "type": "IdentifierOccurrence",
+            "Identifier": {
+                "value": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.19"
+            }
+        },
+        "creator": "annotize"
+    },
+    {
+        "type": "Annotation",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.34",
+        "target": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.34",
+        "body": {
+            "type": "IdentifierOccurrence",
+            "Identifier": {
+                "value": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.anno.19"
+            }
+        },
+        "creator": "annotize"
+    },
+    {
+        "type": "FragmentTarget",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.1",
+        "source": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471",
+        "selector": [
+            {
+                "type": "PathSelector",
+                "startPath": "node(/html/body/div/div/article/section/div[5]/div/p/span/math/semantics/mi)",
+                "endPath": "after-node(/html/body/div/div/article/section/div[5]/div/p/span/math/semantics/mi)"
+            }
+        ]
+    },
+    {
+        "type": "FragmentTarget",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.2",
+        "source": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471",
+        "selector": [
+            {
+                "type": "PathSelector",
+                "startPath": "node(/html/body/div/div/article/section/div[5]/div/p/span/math[2]/semantics/mi)",
+                "endPath": "after-node(/html/body/div/div/article/section/div[5]/div/p/span/math[2]/semantics/mi)"
+            }
+        ]
+    },
+    {
+        "type": "FragmentTarget",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.3",
+        "source": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471",
+        "selector": [
+            {
+                "type": "PathSelector",
+                "startPath": "node(/html/body/div/div/article/section/div[5]/div/p/span/math[3]/semantics/mrow/mi)",
+                "endPath": "after-node(/html/body/div/div/article/section/div[5]/div/p/span/math[3]/semantics/mrow/mi)"
+            }
+        ]
+    },
+    {
+        "type": "FragmentTarget",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.4",
+        "source": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471",
+        "selector": [
+            {
+                "type": "PathSelector",
+                "startPath": "node(/html/body/div/div/article/section/div[5]/div/table/tbody/tr/td[2]/math/semantics/mrow/mrow/mrow/msub/mi[2])",
+                "endPath": "after-node(/html/body/div/div/article/section/div[5]/div/table/tbody/tr/td[2]/math/semantics/mrow/mrow/mrow/msub/mi[2])"
+            }
+        ]
+    },
+    {
+        "type": "FragmentTarget",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.5",
+        "source": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471",
+        "selector": [
+            {
+                "type": "PathSelector",
+                "startPath": "node(/html/body/div/div/article/section/div[5]/div/table/tbody/tr/td[2]/math/semantics/mrow/mrow/mrow[2]/msup/mi)",
+                "endPath": "after-node(/html/body/div/div/article/section/div[5]/div/table/tbody/tr/td[2]/math/semantics/mrow/mrow/mrow[2]/msup/mi)"
+            }
+        ]
+    },
+    {
+        "type": "FragmentTarget",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.6",
+        "source": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471",
+        "selector": [
+            {
+                "type": "PathSelector",
+                "startPath": "node(/html/body/div/div/article/section/div[5]/div/table/tbody/tr/td[2]/math/semantics/mrow/mrow/mrow[2]/msup/mrow/mrow/mi)",
+                "endPath": "after-node(/html/body/div/div/article/section/div[5]/div/table/tbody/tr/td[2]/math/semantics/mrow/mrow/mrow[2]/msup/mrow/mrow/mi)"
+            }
+        ]
+    },
+    {
+        "type": "FragmentTarget",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.7",
+        "source": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471",
+        "selector": [
+            {
+                "type": "PathSelector",
+                "startPath": "node(/html/body/div/div/article/section/div[5]/div/table/tbody/tr/td[2]/math/semantics/mrow/mrow/mrow[2]/msup/mrow/mrow[2]/mi)",
+                "endPath": "after-node(/html/body/div/div/article/section/div[5]/div/table/tbody/tr/td[2]/math/semantics/mrow/mrow/mrow[2]/msup/mrow/mrow[2]/mi)"
+            }
+        ]
+    },
+    {
+        "type": "FragmentTarget",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.8",
+        "source": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471",
+        "selector": [
+            {
+                "type": "PathSelector",
+                "startPath": "node(/html/body/div/div/article/section/div[6]/p/math[2]/semantics/mrow/mrow/msub/mi[2])",
+                "endPath": "after-node(/html/body/div/div/article/section/div[6]/p/math[2]/semantics/mrow/mrow/msub/mi[2])"
+            }
+        ]
+    },
+    {
+        "type": "FragmentTarget",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.9",
+        "source": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471",
+        "selector": [
+            {
+                "type": "PathSelector",
+                "startPath": "node(/html/body/div/div/article/section/div[6]/p/math[2]/semantics/mrow/msup/mi)",
+                "endPath": "after-node(/html/body/div/div/article/section/div[6]/p/math[2]/semantics/mrow/msup/mi)"
+            }
+        ]
+    },
+    {
+        "type": "FragmentTarget",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.10",
+        "source": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471",
+        "selector": [
+            {
+                "type": "PathSelector",
+                "startPath": "node(/html/body/div/div/article/section/div[6]/p/math[2]/semantics/mrow/msup/mrow/msqrt/mrow/mi[2])",
+                "endPath": "after-node(/html/body/div/div/article/section/div[6]/p/math[2]/semantics/mrow/msup/mrow/msqrt/mrow/mi[2])"
+            }
+        ]
+    },
+    {
+        "type": "FragmentTarget",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.11",
+        "source": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471",
+        "selector": [
+            {
+                "type": "PathSelector",
+                "startPath": "node(/html/body/div/div/article/section/div[5]/div/table/tbody/tr/td[2]/math/semantics/mrow/mrow/mrow/mrow/mi)",
+                "endPath": "after-node(/html/body/div/div/article/section/div[5]/div/table/tbody/tr/td[2]/math/semantics/mrow/mrow/mrow/mrow/mi)"
+            }
+        ]
+    },
+    {
+        "type": "FragmentTarget",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.12",
+        "source": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471",
+        "selector": [
+            {
+                "type": "PathSelector",
+                "startPath": "node(/html/body/div/div/article/section/div[6]/p/math/semantics/mi)",
+                "endPath": "after-node(/html/body/div/div/article/section/div[6]/p/math/semantics/mi)"
+            }
+        ]
+    },
+    {
+        "type": "FragmentTarget",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.13",
+        "source": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471",
+        "selector": [
+            {
+                "type": "PathSelector",
+                "startPath": "node(/html/body/div/div/article/section/div[6]/p/math[2]/semantics/mrow/mrow/mrow/mi)",
+                "endPath": "after-node(/html/body/div/div/article/section/div[6]/p/math[2]/semantics/mrow/mrow/mrow/mi)"
+            }
+        ]
+    },
+    {
+        "type": "FragmentTarget",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.14",
+        "source": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471",
+        "selector": [
+            {
+                "type": "PathSelector",
+                "startPath": "node(/html/body/div/div/article/section/div[5]/div/table/tbody/tr/td[2]/math/semantics/mrow/mrow/mrow[2]/msup/mrow/mrow/msup/mi)",
+                "endPath": "after-node(/html/body/div/div/article/section/div[5]/div/table/tbody/tr/td[2]/math/semantics/mrow/mrow/mrow[2]/msup/mrow/mrow/msup/mi)"
+            }
+        ]
+    },
+    {
+        "type": "FragmentTarget",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.15",
+        "source": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471",
+        "selector": [
+            {
+                "type": "PathSelector",
+                "startPath": "node(/html/body/div/div/article/section/div[5]/div/table/tbody/tr/td[2]/math/semantics/mrow/mrow/mrow[2]/msup/mrow/mrow[2]/msup/mrow/mrow/mi)",
+                "endPath": "after-node(/html/body/div/div/article/section/div[5]/div/table/tbody/tr/td[2]/math/semantics/mrow/mrow/mrow[2]/msup/mrow/mrow[2]/msup/mrow/mrow/mi)"
+            }
+        ]
+    },
+    {
+        "type": "FragmentTarget",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.16",
+        "source": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471",
+        "selector": [
+            {
+                "type": "PathSelector",
+                "startPath": "node(/html/body/div/div/article/section/div[5]/div/table/tbody/tr/td[2]/math/semantics/mrow/mrow/mrow[2]/mi)",
+                "endPath": "after-node(/html/body/div/div/article/section/div[5]/div/table/tbody/tr/td[2]/math/semantics/mrow/mrow/mrow[2]/mi)"
+            }
+        ]
+    },
+    {
+        "type": "FragmentTarget",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.17",
+        "source": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471",
+        "selector": [
+            {
+                "type": "PathSelector",
+                "startPath": "node(/html/body/div/div/article/section/div[6]/p/math[2]/semantics/mrow/msup/mrow/msqrt/mrow/mi)",
+                "endPath": "after-node(/html/body/div/div/article/section/div[6]/p/math[2]/semantics/mrow/msup/mrow/msqrt/mrow/mi)"
+            }
+        ]
+    },
+    {
+        "type": "FragmentTarget",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.18",
+        "source": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471",
+        "selector": [
+            {
+                "type": "PathSelector",
+                "startPath": "node(/html/body/div/div/article/section/div[7]/div/p/span/math/semantics/mi)",
+                "endPath": "after-node(/html/body/div/div/article/section/div[7]/div/p/span/math/semantics/mi)"
+            }
+        ]
+    },
+    {
+        "type": "FragmentTarget",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.19",
+        "source": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471",
+        "selector": [
+            {
+                "type": "PathSelector",
+                "startPath": "node(/html/body/div/div/article/section/div[7]/div/p/span/math[2]/semantics/mi)",
+                "endPath": "after-node(/html/body/div/div/article/section/div[7]/div/p/span/math[2]/semantics/mi)"
+            }
+        ]
+    },
+    {
+        "type": "FragmentTarget",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.20",
+        "source": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471",
+        "selector": [
+            {
+                "type": "PathSelector",
+                "startPath": "node(/html/body/div/div/article/section/div[7]/div/p/span/math[3]/semantics/mrow/mi)",
+                "endPath": "after-node(/html/body/div/div/article/section/div[7]/div/p/span/math[3]/semantics/mrow/mi)"
+            }
+        ]
+    },
+    {
+        "type": "FragmentTarget",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.21",
+        "source": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471",
+        "selector": [
+            {
+                "type": "PathSelector",
+                "startPath": "node(/html/body/div/div/article/section/div[7]/div/table/tbody/tr/td[2]/math/semantics/mrow/mrow/mrow/msub/mi[2])",
+                "endPath": "after-node(/html/body/div/div/article/section/div[7]/div/table/tbody/tr/td[2]/math/semantics/mrow/mrow/mrow/msub/mi[2])"
+            }
+        ]
+    },
+    {
+        "type": "FragmentTarget",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.22",
+        "source": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471",
+        "selector": [
+            {
+                "type": "PathSelector",
+                "startPath": "node(/html/body/div/div/article/section/div[7]/div/table/tbody/tr/td[2]/math/semantics/mrow/mrow/mrow[2]/msup[3]/mi)",
+                "endPath": "after-node(/html/body/div/div/article/section/div[7]/div/table/tbody/tr/td[2]/math/semantics/mrow/mrow/mrow[2]/msup[3]/mi)"
+            }
+        ]
+    },
+    {
+        "type": "FragmentTarget",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.23",
+        "source": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471",
+        "selector": [
+            {
+                "type": "PathSelector",
+                "startPath": "node(/html/body/div/div/article/section/div[7]/div/table/tbody/tr/td[2]/math/semantics/mrow/mrow/mrow[2]/msup[3]/mrow/mrow/msqrt/mrow/mi)",
+                "endPath": "after-node(/html/body/div/div/article/section/div[7]/div/table/tbody/tr/td[2]/math/semantics/mrow/mrow/mrow[2]/msup[3]/mrow/mrow/msqrt/mrow/mi)"
+            }
+        ]
+    },
+    {
+        "type": "FragmentTarget",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.24",
+        "source": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471",
+        "selector": [
+            {
+                "type": "PathSelector",
+                "startPath": "node(/html/body/div/div/article/section/div[8]/p/math/semantics/mrow/mi)",
+                "endPath": "after-node(/html/body/div/div/article/section/div[8]/p/math/semantics/mrow/mi)"
+            }
+        ]
+    },
+    {
+        "type": "FragmentTarget",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.25",
+        "source": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471",
+        "selector": [
+            {
+                "type": "PathSelector",
+                "startPath": "node(/html/body/div/div/article/section/div[8]/p/math[3]/semantics/msup/mrow/mi)",
+                "endPath": "after-node(/html/body/div/div/article/section/div[8]/p/math[3]/semantics/msup/mrow/mi)"
+            }
+        ]
+    },
+    {
+        "type": "FragmentTarget",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.26",
+        "source": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471",
+        "selector": [
+            {
+                "type": "PathSelector",
+                "startPath": "node(/html/body/div/div/article/section/div[8]/p/math[4]/semantics/mrow/mrow/mi)",
+                "endPath": "after-node(/html/body/div/div/article/section/div[8]/p/math[4]/semantics/mrow/mrow/mi)"
+            }
+        ]
+    },
+    {
+        "type": "FragmentTarget",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.27",
+        "source": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471",
+        "selector": [
+            {
+                "type": "PathSelector",
+                "startPath": "node(/html/body/div/div/article/section/div[8]/p/math[5]/semantics/mrow/mrow/mfrac/mi)",
+                "endPath": "after-node(/html/body/div/div/article/section/div[8]/p/math[5]/semantics/mrow/mrow/mfrac/mi)"
+            }
+        ]
+    },
+    {
+        "type": "FragmentTarget",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.28",
+        "source": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471",
+        "selector": [
+            {
+                "type": "PathSelector",
+                "startPath": "node(/html/body/div/div/article/section/div[7]/div/table/tbody/tr/td[2]/math/semantics/mrow/mrow/mrow/mrow/mi)",
+                "endPath": "after-node(/html/body/div/div/article/section/div[7]/div/table/tbody/tr/td[2]/math/semantics/mrow/mrow/mrow/mrow/mi)"
+            }
+        ]
+    },
+    {
+        "type": "FragmentTarget",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.29",
+        "source": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471",
+        "selector": [
+            {
+                "type": "PathSelector",
+                "startPath": "node(/html/body/div/div/article/section/div[7]/div/table/tbody/tr/td[2]/math/semantics/mrow/mrow/mrow/mrow/mi)",
+                "endPath": "after-node(/html/body/div/div/article/section/div[7]/div/table/tbody/tr/td[2]/math/semantics/mrow/mrow/mrow/mrow/mi)"
+            }
+        ]
+    },
+    {
+        "type": "FragmentTarget",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.30",
+        "source": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471",
+        "selector": [
+            {
+                "type": "PathSelector",
+                "startPath": "node(/html/body/div/div/article/section/div[8]/p/math[2]/semantics/mrow/mrow/mrow/mi)",
+                "endPath": "after-node(/html/body/div/div/article/section/div[8]/p/math[2]/semantics/mrow/mrow/mrow/mi)"
+            }
+        ]
+    },
+    {
+        "type": "FragmentTarget",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.31",
+        "source": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471",
+        "selector": [
+            {
+                "type": "PathSelector",
+                "startPath": "node(/html/body/div/div/article/section/div[7]/div/table/tbody/tr/td[2]/math/semantics/mrow/mrow/mrow[2]/msup[2]/mi)",
+                "endPath": "after-node(/html/body/div/div/article/section/div[7]/div/table/tbody/tr/td[2]/math/semantics/mrow/mrow/mrow[2]/msup[2]/mi)"
+            }
+        ]
+    },
+    {
+        "type": "FragmentTarget",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.32",
+        "source": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471",
+        "selector": [
+            {
+                "type": "PathSelector",
+                "startPath": "node(/html/body/div/div/article/section/div[7]/div/table/tbody/tr/td[2]/math/semantics/mrow/mrow/mrow[2]/msup[3]/mrow/mrow/msqrt/mrow/mi[2])",
+                "endPath": "after-node(/html/body/div/div/article/section/div[7]/div/table/tbody/tr/td[2]/math/semantics/mrow/mrow/mrow[2]/msup[3]/mrow/mrow/msqrt/mrow/mi[2])"
+            }
+        ]
+    },
+    {
+        "type": "FragmentTarget",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.33",
+        "source": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471",
+        "selector": [
+            {
+                "type": "PathSelector",
+                "startPath": "node(/html/body/div/div/article/section/div[8]/p/math[2]/semantics/mrow/msup/mrow/msqrt/mrow/mi)",
+                "endPath": "after-node(/html/body/div/div/article/section/div[8]/p/math[2]/semantics/mrow/msup/mrow/msqrt/mrow/mi)"
+            }
+        ]
+    },
+    {
+        "type": "FragmentTarget",
+        "id": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471#f7584846-ebaf-486f-8c0a-552d1da33db1.target.34",
+        "source": "http://sigmathling.kwarc.info/arxmliv/2020/1311.5471",
+        "selector": [
+            {
+                "type": "PathSelector",
+                "startPath": "node(/html/body/div/div/article/section/div[8]/p/math[5]/semantics/mrow/mi)",
+                "endPath": "after-node(/html/body/div/div/article/section/div[8]/p/math[5]/semantics/mrow/mi)"
+            }
+        ]
+    }
+]

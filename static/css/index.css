@@ -1,0 +1,153 @@
+.root-selection {
+    background-color: #dde8ff;
+    width: 70%;
+    min-width: 27.5em;
+    padding: 1em 1.87em;
+    position: absolute;
+    transform: translate(-50%, 0);
+    left: 50%;
+    top: 529.359px;
+    box-shadow: 0 1.25em 3.43em rgba(0, 0, 0, 0.08);
+    border-radius: 0.5em;
+    box-sizing: border-box;
+}
+
+.root-container {
+  background-color: #ffffff;
+  width: 70%;
+  min-width: 27.5em;
+  padding: 3.12em 1.87em;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  box-shadow: 0 1.25em 3.43em rgba(0, 0, 0, 0.08);
+  border-radius: 0.5em;
+  box-sizing: border-box;
+}
+
+input.root-upload[type="file"] {
+  display: none;
+}
+
+label.root-label {
+  display: block;
+  position: relative;
+  background-color: #025bee;
+  color: #ffffff;
+  font-size: 1.1em;
+  text-align: center;
+  width: 32em;
+  padding: 1em 0;
+  border-radius: 0.3em;
+  margin: 0 auto 1em auto;
+  cursor: pointer;
+}
+
+label.root-label i {
+    padding: 0;
+    font-size: 40px;
+}
+
+label.root-label span {
+    position: relative;
+    padding-left: 15px;
+    font-size: 26px;
+    top: -10px;
+}
+
+.root-upload-preview {
+    text-align: center;
+}
+
+.root-upload-error {
+    color: #ff3030;
+    text-align: center;
+}
+
+.root-container.active {
+  border: 0.2em dashed #025bee;
+}
+
+.root-selection label {
+    font-size: 20px;
+}
+
+.root-selection label input.section-id {
+    width: 250px;
+    height: 32px;
+    line-height: 20px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.root-selection .root-menu {
+    padding: 5px 0 5px 0;
+}
+
+button.confirm-upload {
+    float: right;
+    width: 64px;
+    height: 32px;
+}
+
+button.confirm-upload:not(:disabled):hover {
+    cursor: pointer;
+}
+
+#index-view h1 {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 15px;
+    text-align: center;
+    font-size: 50px;
+}
+
+label.root-label-config {
+    display: block;
+    position: relative;
+    background-color: #025bee;
+    color: #ffffff;
+    font-size: 1.1em;
+    text-align: center;
+    width: 16em;
+    padding: 1em 0;
+    border-radius: 0.3em;
+    margin-bottom: 1em;
+    cursor: pointer;
+  }
+  
+.root-config-upload {
+    display: inline-block;
+}
+
+.root-config-upload .config-button {
+    height: 32px;
+    width: 96px;
+}
+
+.root-config-upload .config-button i {
+    float: left;
+    padding: 0;
+}
+
+.root-config-upload .config-button span {
+    display: block;
+    font-size: 16px;
+    line-height: 1.5em;
+}
+
+.root-config-upload .config-button:hover {
+    cursor: pointer;
+}
+
+.root-config-name {
+    display: inline-block;
+}
+
+.root-configuration {
+    display: none;
+}
