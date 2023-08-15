@@ -23,7 +23,10 @@ Navigate to the url using a webbrowser of your choice (tested with Google Chrome
 
 #### Upload a html and config file
 Upload the html file that should be annotated together with the (otional) configuration file.  
-Some example files can be found under ```/example```. For the html source download the ar5iv paper from: https://ar5iv.labs.arxiv.org/html/1311.5471
+Some example files can be found under ```/example```.  
+For the html source download the ar5iv paper from: https://ar5iv.labs.arxiv.org/html/1311.5471  
+(The examle configuration assumes that the html source file is named: ```1311.5471.html``` and will
+set the document uri to ```http://sigmathling.kwarc.info/arxmliv/2020/1311.5471``` and load a declaration tagset)
 
 #### Import / Export annotations
 Annotations can be imported and exported from the tools settings menu.
