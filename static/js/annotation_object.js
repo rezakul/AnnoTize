@@ -347,7 +347,6 @@ class AnnotationObject {
     } else {
       console.warn('Unknown parameter: ' + border + ", " + direction);
     }
-    console.log(this.#target.pathSelector.startPath, this.#target.pathSelector.endPath);
   }
 
   #createNewFragmentTargetFromRange(range) {
@@ -376,14 +375,45 @@ class AnnotationObject {
     return fragmentTarget;
   }
 
+  #calculateCustomOffset(node, offset) {
+    let result = offset;
+    let parent;
+  
+    // offset will only be different if node is a text node or annotation-highlight node
+    if (node.nodeType !== Node.TEXT_NODE && !(node.nodeType === Node.ELEMENT_NODE && node.tagName === "ANNOTATION-HIGHLIGHT")) {
+      return offset;
+    }
+  
+    parent = node.parentNode;
+    do {
+      // add all text content in nodes before to offset
+      for (let i = 0; i < parent.childNodes.length; ++i) {
+        let textLen;
+        let child = parent.childNodes[i];
+        if (child.isSameNode(node)) {
+          break;
+        }
+        textLen = Array.from(child.textContent).length;
+        result += textLen;
+      }
+      // add text content length as long as inside annotation element
+      node = parent;
+      parent = parent.parentNode;
+    } while (node.nodeType === 1 && node.tagName === "ANNOTATION-HIGHLIGHT");
+  
+    return result;
+  }
+
   #createXPathCharOffset(node, offset) {
-    let path;
+    let path, charOffset;
     // create new xpath
     path = makeXPath(node);
     // pretty print
     path = prettyPrintXPath(path);
+    // get char offset of whole node
+    charOffset = this.#calculateCustomOffset(node, offset);
     // into custom format
-    path = "char(" + path + "," + offset + ")";
+    path = "char(" + path + "," + charOffset + ")";
 
     return path;
   }
@@ -411,32 +441,184 @@ class AnnotationObject {
 
     return path;
   }
+
+  #realPreviousSibling(node) {
+    let sibling;
+    // get the previous sibling
+    sibling = node.previousSibling;
+    while (sibling && !/\S/.test(sibling.nodeValue)) {
+      // skip empty siblings -> artefact from html parser
+      sibling = sibling.previousSibling;
+    }
+    while (sibling && sibling.nodeType === Node.ELEMENT_NODE && sibling.tagName === "ANNOTATION-HIGHLIGHT") {
+      sibling = sibling.lastChild;
+    }
+    return sibling;
+  }
+
+  #realNextSibling(node) {
+    let sibling;
+    // get the previous sibling
+    sibling = node.nextSibling;
+    while (sibling && !/\S/.test(sibling.nodeValue)) {
+      // skip empty siblings -> artefact from html parser
+      sibling = sibling.nextSibling;
+    }
+    while (sibling && sibling.nodeType === Node.ELEMENT_NODE && sibling.tagName === "ANNOTATION-HIGHLIGHT") {
+      sibling = sibling.firstChild;
+    }
+    return sibling;
+  }
+
+  #realFirstChild(node) {
+    let child;
+    // get the previous sibling
+    child = node.firstChild;
+    while (child && !/\S/.test(child.nodeValue)) {
+      // skip empty childs -> artefact from html parser
+      child = child.nextSibling;
+    }
+    while (child && child.nodeType === Node.ELEMENT_NODE && child.tagName === "ANNOTATION-HIGHLIGHT") {
+      child = child.firstChild;
+    }
+    return child;
+  }
+
+  #realLastChild(node) {
+    let child;
+    // get the previous sibling
+    child = node.lastChild;
+    while (child && !/\S/.test(child.nodeValue)) {
+      // skip empty childs -> artefact from html parser
+      child = child.previousSibling;
+    }
+    while (child && child.nodeType === Node.ELEMENT_NODE && child.tagName === "ANNOTATION-HIGHLIGHT") {
+      child = child.lastChild;
+    }
+    return child;
+  }
+
+  #mathAdjustSelectionLeft(customXpath) {
+    let jsXpath, node;
+    let result;
+
+    // adapt xpath
+    jsXpath = extractXPathFromCustomFormat(customXpath);
+    node = getElementByXPath(jsXpath);
+          
+    if (customXpath.startsWith('char')) {
+      // case: ...<node>te|xt</node> => ...|<node>text</node>
+      result = this.#createXPathNode(node);
+    } else if (customXpath.startsWith('node')) {
+      let sibling = this.#realPreviousSibling(node);
+      if (sibling) {
+        // case: <parent>...</sibling>|<node>
+        let child = this.#realLastChild(sibling);
+        if (child && child.nodeType !== Node.TEXT_NODE) {
+          // case: <parent>...</child></sibling>|<node> => <parent>...</child>|</sibling><node>
+          result = this.#createXPathAfterNode(child);
+        } else {
+          // case: <parent>...<sibling>text</sibling>|<node> => <parent>...|<sibling>text</sibling><node>
+          result = this.#createXPathNode(sibling);
+        }
+      } else {
+        // case: ...<parent>|<node> => ...|<parent><node>
+        result = this.#createXPathNode(node.parentNode);
+      }
+    } else if (customXpath.startsWith('after-node')) {
+      let child = this.#realLastChild(node);
+      let sibling = this.#realPreviousSibling(node);
+      if (child && child.nodeType !== Node.TEXT_NODE) {
+        // ...</child></node>|... => ...</child>|</node>...
+        result = this.#createXPathAfterNode(child);
+      } else if (sibling) {
+        // ...</sibling><node>text</node>|... => ...</sibling>|<node>text</node>...
+        result = this.#createXPathAfterNode(sibling);
+      } else {
+        // <parent><node>text</node>|... -> <parent>|<node>text</node>...
+        result = this.#createXPathNode(node);
+      }
+    } else {
+      console.warn('Unknown xpath prefix:', customXpath);
+    }
+    return result;
+  }
+
+  #mathAdjustSelectionRight(customXpath) {
+    let jsXpath, node;
+    let result;
+
+    // adapt xpath
+    jsXpath = extractXPathFromCustomFormat(customXpath);
+    node = getElementByXPath(jsXpath);
+
+    if (customXpath.startsWith('char')) {
+      // case: <node>te|xt</node>... => <node>text</node>|...
+      result = this.#createXPathAfterNode(node);
+    } else if (customXpath.startsWith('node')) {
+      let child = this.#realFirstChild(node);
+      if (child && child.nodeType !== Node.TEXT_NODE) {
+        // case: ...|<node><child>... => ...<node>|<child>...
+        result = this.#createXPathNode(child);
+      } else {
+        // case: ...|<node>text</node>... => ...<node>text</node>|...
+        result = this.#createXPathAfterNode(node);
+      }
+    } else if (customXpath.startsWith('after-node')) {
+      let sibling = this.#realNextSibling(node);
+      if (sibling) {
+        // case: </node>|<sibling>...
+        let child = this.#realFirstChild(sibling);
+        if (child && child.nodeType !== Node.TEXT_NODE) {
+          // case: </node>|<sibling><child> => </node><sibling>|<child>
+          result = this.#createXPathNode(child);
+        } else {
+          // case: </node>|<sibling>text</sibling>... => </node><sibling>text</sibling>|...
+          result = this.#createXPathAfterNode(sibling);
+        }
+      } else {
+        // case: </node>|</parent>... => </node></parent>|...
+        result = this.#createXPathAfterNode(node.parentNode);
+      }
+    } else {
+      console.warn('Unknown xpath prefix:', customXpath);
+    }
+    return result;
+  }
   
   /**
    * Adjust the start of the selection and shifts it one character to the left.
    */
   adjustSelectionStartLeft() {
-    let selection, range, newTarget;
-    let endRange;
+    let newTarget;
     // remove old annoation tags in html
     this.#selection.remove();
-    // create new range from xpath
-    range = getRangeToXPath(this.#selection.xPathStart, this.#selection.xPathEnd);
-    // create selection in reverse order (i.e right-to-left)
-    endRange = range.cloneRange();
-    endRange.collapse(false);
-    selection = window.getSelection();
-    selection.removeAllRanges();
-    selection.addRange(endRange);
-    selection.extend(range.startContainer, range.startOffset);
-    // extend selection one to the left (i.e. the start of selection one to left)
-    selection.modify("extend", "left", "character");
-    range = selection.getRangeAt(0);
-    // clear selection
-    selection.removeAllRanges();
-    
-    // create new fragment target
-    newTarget = this.#createNewFragmentTargetFromRange(range);
+
+    if (this.#selection.xPathStart.includes('/math/')) {
+      let result;
+      result = this.#mathAdjustSelectionLeft(this.#selection.xPathStart);
+      // create new fragment target
+      newTarget = this.#createNewFragmentTargetFromPath(result, this.#selection.xPathEnd);
+    } else {
+      let selection, range, endRange;
+      // create new range from xpath
+      range = getRangeToXPath(this.#selection.xPathStart, this.#selection.xPathEnd);
+      // create selection in reverse order (i.e right-to-left)
+      endRange = range.cloneRange();
+      endRange.collapse(false);
+      selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(endRange);
+      selection.extend(range.startContainer, range.startOffset);
+      // extend selection one to the left (i.e. the start of selection one to left)
+      selection.modify("extend", "left", "character");
+      range = selection.getRangeAt(0);
+      // clear selection
+      selection.removeAllRanges();
+      
+      // create new fragment target
+      newTarget = this.#createNewFragmentTargetFromRange(range);
+    }
     this.setFragmentTarget(newTarget);
   }
   
@@ -444,27 +626,35 @@ class AnnotationObject {
    * Adjust the start of the selection and shifts it one character to the right.
    */
   adjustSelectionStartRight() {
-    let selection, range, newTarget;
-    let endRange;
+    let newTarget;
     // remove old annoation tags in html
     this.#selection.remove();
-    // create new range from xpath
-    range = getRangeToXPath(this.#selection.xPathStart, this.#selection.xPathEnd);
-    // create selection in reverse order (i.e right-to-left)
-    endRange = range.cloneRange();
-    endRange.collapse(false);
-    selection = window.getSelection();
-    selection.removeAllRanges();
-    selection.addRange(endRange);
-    selection.extend(range.startContainer, range.startOffset);
-    // extend selection one to the right (i.e. the start of selection one to right)
-    selection.modify("extend", "right", "character");
-    range = selection.getRangeAt(0);
-    // clear selection
-    selection.removeAllRanges();
 
-    // create new fragment target
-    newTarget = this.#createNewFragmentTargetFromRange(range);
+    if (this.#selection.xPathStart.includes('/math/')) {
+      let result;
+      result = this.#mathAdjustSelectionRight(this.#selection.xPathStart);
+      // create new fragment target
+      newTarget = this.#createNewFragmentTargetFromPath(result, this.#selection.xPathEnd);
+    } else {
+      let selection, range, endRange;
+      // create new range from xpath
+      range = getRangeToXPath(this.#selection.xPathStart, this.#selection.xPathEnd);
+      // create selection in reverse order (i.e right-to-left)
+      endRange = range.cloneRange();
+      endRange.collapse(false);
+      selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(endRange);
+      selection.extend(range.startContainer, range.startOffset);
+      // extend selection one to the right (i.e. the start of selection one to right)
+      selection.modify("extend", "right", "character");
+      range = selection.getRangeAt(0);
+      // clear selection
+      selection.removeAllRanges();
+
+      // create new fragment target
+      newTarget = this.#createNewFragmentTargetFromRange(range);
+    }
     this.setFragmentTarget(newTarget);
   }
 
@@ -472,216 +662,72 @@ class AnnotationObject {
    * Adjust the end of the selection and shifts it one character to the left.
    */
   adjustSelectionEndLeft() {
-    let xPathEnd, newXPathEnd, newTarget;
-    let path, node;
+    let newTarget;
     // remove old annoation tags in html
     this.#selection.remove();
-    // adapt xpath
-    xPathEnd = this.#selection.xPathEnd;
-    path = extractXPathFromCustomFormat(xPathEnd);
-    node = getElementByXPath(path);
-    if (xPathEnd.includes('/math/')) {
-      // math node -> only allow whole nodes in math context
-      if (xPathEnd.startsWith('char')) {
-        // no char offset in math nodes -> include whole node
-        newXPathEnd = this.#createXPathAfterNode(node);
-      } else if (xPathEnd.startsWith('node')) {
-        if (node.firstChild && node.firstChild.nodeType !== Node.TEXT_NODE) {
-          // if node has child descend one level deeper
-          newXPathEnd = this.#createXPathNode(node.firstChild);
-        } else {
-          // include whole node if no child present
-          newXPathEnd = this.#createXPathAfterNode(node);
-        }
-      } else if (xPathEnd.startsWith('after-node')) {
-        if (node.nextSibling) {
-          if (node.nextSibling.firstChild && node.nextSibling.firstChild.nodeType !== Node.TEXT_NODE) {
-            // include sibling start tag
-            newXPathEnd = this.#createXPathNode(node.nextSibling.firstChild);
-          } else {
-            // include whole sibling
-            newXPathEnd = this.#createXPathAfterNode(node.nextSibling);
-          }
-        } else {
-          // include parent end-tag
-          newXPathEnd = this.#createXPathAfterNode(node.parentNode);
-        }
-      } else {
-        console.warn('Unknown xpath prefix:', xPathEnd);
-      }
-    } else {
-      if (xPathEnd.startsWith('char')) {
-        // get offset
-        let offset = extractXPathCharOffset(xPathEnd);
-        // create array and don't use textContent.length immediately to always get the correct number of Unicode character
-        let textLen = Array.from(node.textContent).length;
-
-        // check if offset already at end of node
-        if (textLen > offset) {  
-          // increase offset
-          offset = offset + 1;
-          newXPathEnd = this.#createXPathCharOffset(node, offset);
-        } else {
-          // include end tag in target
-          newXPathEnd = this.#createXPathAfterNode(node);
-        }
-      } else if (xPathEnd.startsWith('node')) {
-        if (node.firstChild && node.firstChild.nodeType === Node.TEXT_NODE) {
-          newXPathEnd = this.#createXPathCharOffset(node, 0);
-        } else {
-          newXPathEnd = this.#createXPathNode(node.firstChild);
-        }
-      } else if (xPathEnd.startsWith('after-node')) {
-        if (node.nextSibling) {
-          if (node.nextSibling.firstChild && node.nextSibling.firstChild.nodeType !== Node.TEXT_NODE) {
-            // include sibling start tag
-            newXPathEnd = this.#createXPathNode(node.nextSibling.firstChild);
-          } else {
-            // char offset (start with 1 because 0 would be same as after-node(node))
-            newXPathEnd = getXPathToNode(node.nextSibling, 1);
-          }         
-        } else {
-          // include end tag of parent
-          newXPathEnd = this.#createXPathAfterNode(node.parentNode);
-        }
-      } else {
-        console.warn('Unknown xpath prefix:', xPathEnd);
-      }
-    }
-    // create new fragment target
-    newTarget = this.#createNewFragmentTargetFromPath(this.#selection.xPathStart, newXPathEnd);
-    this.setFragmentTarget(newTarget);
-
-    /*
-    let selection, range, newTarget;
+  
+    if (this.#selection.xPathEnd.includes('/math/')) {
+      let result;
+      result = this.#mathAdjustSelectionLeft(this.#selection.xPathEnd);
+      // create new fragment target
+      console.log(result);
+      newTarget = this.#createNewFragmentTargetFromPath(this.#selection.xPathStart, result);
+    } else {      
+      let selection, range;
     
-    // remove old annoation tags in html
-    this.#selection.remove();
-    // create new range from xpath
-    range = getRangeToXPath(this.#selection.xPathStart, this.#selection.xPathEnd);
-    // get selection
-    selection = window.getSelection();
-    // create selection in order (i.e left-to-right)
-    selection.removeAllRanges();
-    selection.addRange(range);
-    // extend selection one to the left (i.e. the end of selection one to left)
-    selection.modify("extend", "left", "character");
-    range = selection.getRangeAt(0);
-    // clear selection
-    selection.removeAllRanges();
-
-    // create new fragment target
-    newTarget = this.#createNewFragmentTargetFromRange(range);
-    this.setFragmentTarget(newTarget);
-    */
+      // create new range from xpath
+      range = getRangeToXPath(this.#selection.xPathStart, this.#selection.xPathEnd);
+      // get selection
+      selection = window.getSelection();
+      // create selection in order (i.e left-to-right)
+      selection.removeAllRanges();
+      selection.addRange(range);
+      // extend selection one to the left (i.e. the end of selection one to left)
+      selection.modify("extend", "left", "character");
+      range = selection.getRangeAt(0);
+      // clear selection
+      selection.removeAllRanges();
+  
+      // create new fragment target
+      newTarget = this.#createNewFragmentTargetFromRange(range);
+    }
+    this.setFragmentTarget(newTarget);  
   }
 
   /**
    * Adjust the end of the selection and shifts it one character to the right.
    */
   adjustSelectionEndRight() {
-    let xPathEnd, newXPathEnd, newTarget;
-    let path, node;
+    let newTarget;
     // remove old annoation tags in html
     this.#selection.remove();
-    // adapt xpath
-    xPathEnd = this.#selection.xPathEnd;
-    path = extractXPathFromCustomFormat(xPathEnd);
-    node = getElementByXPath(path);
-    if (xPathEnd.includes('/math/')) {
-      // math node -> only allow whole nodes in math context
-      if (xPathEnd.startsWith('char')) {
-        // no char offset in math nodes -> include whole node
-        newXPathEnd = this.#createXPathAfterNode(node);
-      } else if (xPathEnd.startsWith('node')) {
-        if (node.firstChild && node.firstChild.nodeType !== Node.TEXT_NODE) {
-          // if node has child descend one level deeper
-          newXPathEnd = this.#createXPathNode(node.firstChild);
-        } else {
-          // include whole node if no child present
-          newXPathEnd = this.#createXPathAfterNode(node);
-        }
-      } else if (xPathEnd.startsWith('after-node')) {
-        if (node.nextSibling) {
-          if (node.nextSibling.firstChild && node.nextSibling.firstChild.nodeType !== Node.TEXT_NODE) {
-            // include sibling start tag
-            newXPathEnd = this.#createXPathNode(node.nextSibling.firstChild);
-          } else {
-            // include whole sibling
-            newXPathEnd = this.#createXPathAfterNode(node.nextSibling);
-          }
-        } else {
-          // include parent end-tag
-          newXPathEnd = this.#createXPathAfterNode(node.parentNode);
-        }
-      } else {
-        console.warn('Unknown xpath prefix:', xPathEnd);
-      }
+
+    if (this.#selection.xPathEnd.includes('/math/')) {
+      let result;
+      result = this.#mathAdjustSelectionRight(this.#selection.xPathEnd);
+      // create new fragment target
+      newTarget = this.#createNewFragmentTargetFromPath(this.#selection.xPathStart, result);
     } else {
-      if (xPathEnd.startsWith('char')) {
-        // get offset
-        let offset = extractXPathCharOffset(xPathEnd);
-        // create array and don't use textContent.length immediately to always get the correct number of Unicode character
-        let textLen = Array.from(node.textContent).length;
+      let selection, range;
 
-        // check if offset already at end of node
-        if (textLen > offset) {  
-          // increase offset
-          offset = offset + 1;
-          newXPathEnd = this.#createXPathCharOffset(node, offset);
-        } else {
-          // include end tag in target
-          newXPathEnd = this.#createXPathAfterNode(node);
-        }
-      } else if (xPathEnd.startsWith('node')) {
-        if (node.firstChild && node.firstChild.nodeType === Node.TEXT_NODE) {
-          newXPathEnd = this.#createXPathCharOffset(node, 0);
-        } else {
-          newXPathEnd = this.#createXPathNode(node.firstChild);
-        }
-      } else if (xPathEnd.startsWith('after-node')) {
-        if (node.nextSibling) {
-          if (node.nextSibling.firstChild && node.nextSibling.firstChild.nodeType !== Node.TEXT_NODE) {
-            // include sibling start tag
-            newXPathEnd = this.#createXPathNode(node.nextSibling.firstChild);
-          } else {
-            // char offset (start with 1 because 0 would be same as after-node(node))
-            newXPathEnd = getXPathToNode(node.nextSibling, 1);
-          }         
-        } else {
-          // include end tag of parent
-          newXPathEnd = this.#createXPathAfterNode(node.parentNode);
-        }
-      } else {
-        console.warn('Unknown xpath prefix:', xPathEnd);
-      }
+      // create new range from xpath
+      range = getRangeToXPath(this.#selection.xPathStart, this.#selection.xPathEnd);
+      // get selection
+      selection = window.getSelection();
+      // create selection in order (i.e left-to-right)
+      selection.removeAllRanges();
+      selection.addRange(range);
+    // extend selection one to the right (i.e. the end of selection one to right)
+      selection.modify("extend", "right", "character");
+      range = selection.getRangeAt(0);
+      // clear selection
+      selection.removeAllRanges();
+  
+      // create new fragment target
+      newTarget = this.#createNewFragmentTargetFromRange(range);
     }
-    // create new fragment target
-    newTarget = this.#createNewFragmentTargetFromPath(this.#selection.xPathStart, newXPathEnd);
+    
     this.setFragmentTarget(newTarget);
-
-    /*
-    let selection, range, newTarget;
-
-    // remove old annoation tags in html
-    this.#selection.remove();
-    // create new range from xpath
-    range = getRangeToXPath(this.#selection.xPathStart, this.#selection.xPathEnd);
-    // get selection
-    selection = window.getSelection();
-    // create selection in order (i.e left-to-right)
-    selection.removeAllRanges();
-    selection.addRange(range);
-  // extend selection one to the right (i.e. the end of selection one to right)
-    selection.modify("extend", "right", "character");
-    range = selection.getRangeAt(0);
-    // clear selection
-    selection.removeAllRanges();
-
-    // create new fragment target
-    newTarget = this.#createNewFragmentTarget(range);
-    this.setFragmentTarget(newTarget);
-    */
   }
 
   changeAnnotationStyle(newStyle) {
