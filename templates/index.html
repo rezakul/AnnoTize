@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/icons_google.css') }}">
     <link rel="stylesheet" href="{{url_for('static', filename='color/dist/coloris.min.css') }}">
 	<link rel="stylesheet" href="{{url_for('static', filename='css/ar5iv.0.7.7.min.css') }}">
+    <link rel="stylesheet" href="{{url_for('static', filename='cetei/CETEIcean.css') }}">
 	
 </head>
 
@@ -21,7 +22,7 @@
             AnnoTize
         </h1>
         <div class="root-container prevent-select">
-            <input class="root-upload" type="file" id="upload-button" multiple accept=".html, .json" />
+            <input class="root-upload" type="file" id="upload-button" multiple accept=".html, .json, .xml" />
             <label class="root-label" for="upload-button">
                 <i class="material-symbols-outlined prevent-select settings-button-icon">upload_file</i>&nbsp; <span>Choose or drop html-documents</span>
             </label>
@@ -48,10 +49,7 @@
 
 <script type="text/javascript" src="{{url_for('static', filename='color/dist/coloris.min.js') }}"></script>
 <script type="text/javascript" src="{{url_for('static', filename='anseki-leader-line/leader-line.min.js') }}"></script>
-
-<script type="text/javascript" src="{{url_for('static', filename='js/annotation_body/annotation_body.js') }}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/annotation_body/annotation_creation_body.js') }}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/annotation_body/annotation_highlight_body.js') }}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='cetei/CETEI.js') }}"></script>
 
 <script type="text/javascript" src="{{url_for('static', filename='js/creator.js') }}"></script>
 
@@ -62,77 +60,54 @@
 <script type="text/javascript" src="{{url_for('static', filename='js/annotation_style/rectangle.js') }}"></script>
 <script type="text/javascript" src="{{url_for('static', filename='js/annotation_style/underscore.js') }}"></script>
 <script type="text/javascript" src="{{url_for('static', filename='js/annotation_style/colored.js') }}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='js/annotation_style/outline.js') }}"></script>
 
 <script type="text/javascript" src="{{url_for('static', filename='js/settings/abstract_tab.js') }}"></script>
 <script type="text/javascript" src="{{url_for('static', filename='js/settings/general_tab.js') }}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/settings/concepts_tab.js') }}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='js/settings/abospec_tab.js') }}"></script>
 <script type="text/javascript" src="{{url_for('static', filename='js/settings/rapid_mode_tab.js') }}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='js/settings/tag_tab.js') }}"></script>
 <script type="text/javascript" src="{{url_for('static', filename='js/settings/style_tab.js') }}"></script>
 <script type="text/javascript" src="{{url_for('static', filename='js/settings/settings.js') }}"></script>
 
 <script type="text/javascript" src="{{url_for('static', filename='js/template_body/abstract_plugin_template.js') }}"></script>
 <script type="text/javascript" src="{{url_for('static', filename='js/template_body/template.js') }}"></script>
 
+<script type="text/javascript" src="{{url_for('static', filename='js/sidebar/sidebar.js') }}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='js/sidebar/entry.js') }}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='js/sidebar/menu.js') }}"></script>
+
+<script type="text/javascript" src="{{url_for('static', filename='js/selection/text_highlight.js') }}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='js/selection/popup.js') }}"></script>
+
 <script type="text/javascript" src="{{url_for('static', filename='js/fragment_target.js') }}"></script>
 <script type="text/javascript" src="{{url_for('static', filename='js/json_parser.js') }}"></script>
 <script type="text/javascript" src="{{url_for('static', filename='js/xpath_handler.js') }}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/selector.js') }}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/annotation_object.js') }}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/sidebar.js') }}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/menu.js') }}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='js/annotation.js') }}"></script>
 <script type="text/javascript" src="{{url_for('static', filename='js/custom_select.js') }}"></script>
 <script type="text/javascript" src="{{url_for('static', filename='js/filter.js') }}"></script>
 
-<script type="text/javascript" src="{{url_for('static', filename='js/universal_template/template.js') }}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/universal_template/identifier_template.js') }}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/universal_template/identifier_declaration_template.js') }}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/universal_template/identifier_occurrence_template.js') }}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/universal_template/number_template.js') }}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/universal_template/text_template.js') }}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/universal_template/textbox_template.js') }}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/universal_template/select_template.js') }}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/universal_template/tag_template.js') }}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/universal_template/reference_template.js') }}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/universal_template/reference.js') }}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/universal_template/default_concepts.js') }}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/universal_template/body.js') }}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/universal_template/abstractField.js') }}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='js/ABoSpecs/abstractField.js') }}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='js/ABoSpecs/body.js') }}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='js/ABoSpecs/default_concepts.js') }}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='js/ABoSpecs/reference.js') }}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='js/ABoSpecs/custom_select.js') }}"></script>
+
+<script type="text/javascript" src="{{url_for('static', filename='js/ABoSpecs/fields/field_template.js') }}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='js/ABoSpecs/fields/number_field.js') }}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='js/ABoSpecs/fields/reference_field.js') }}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='js/ABoSpecs/fields/select_field.js') }}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='js/ABoSpecs/fields/tag_field.js') }}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='js/ABoSpecs/fields/text_field.js') }}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='js/ABoSpecs/fields/textbodx_field.js') }}"></script>
 
 <script type="text/javascript" src="{{url_for('static', filename='js/concept.js') }}"></script>
 
-<script type="text/javascript" src="{{url_for('static', filename='js/annotator.js') }}"></script>
-
 <script type="text/javascript" src="{{url_for('static', filename='js/index.js') }}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='js/annotize.js') }}"></script>
 
 <script type="text/javascript" src="{{url_for('static', filename='js/plugins/plugin.js') }}"></script>
 
-<script type="text/javascript" src="{{url_for('static', filename='js/plugins/simpleTextBody/simple_text_body.js') }}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/plugins/simpleTextBody/template.js') }}"></script>
+
 <script type="text/javascript" src="{{url_for('static', filename='js/plugins/simpleTagBody/tag_set.js') }}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/plugins/simpleTagBody/simple_tag_body.js') }}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/plugins/simpleTagBody/template.js') }}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/plugins/identifierBody/identifier_body.js') }}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/plugins/identifierBody/identifier.js') }}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/plugins/identifierBody/template_base.js') }}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/plugins/identifierBody/template_declaration.js') }}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/plugins/identifierBody/template_occurrence.js') }}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/plugins/groundingBody/grounding_body.js') }}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/plugins/groundingBody/template.js') }}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/plugins/groundingBody/grounding.js') }}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/plugins/quantBody/quant_body.js') }}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/plugins/quantBody/quant.js') }}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/plugins/quantBody/template.js') }}"></script>
-
-<script type="text/javascript" src="{{url_for('static', filename='js/plugins/identifierBody/identifier_base_body.js') }}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/plugins/identifierBody/identifier_declaration_body.js') }}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/plugins/identifierBody/identifier_occurrence_body.js') }}"></script>
-
-<script type="text/javascript" src="{{url_for('static', filename='js/plugins/selectPlugin/advancedSelect.js') }}"></script>
-
 <script type="text/javascript" src="{{url_for('static', filename='js/plugins/simpleTagBody/plugin.js') }}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/plugins/simpleTextBody/plugin.js') }}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/plugins/quantBody/plugin.js') }}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/plugins/identifierBody/plugin.js') }}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/plugins/groundingBody/plugin.js') }}"></script>
-
-<script type="text/javascript" src="{{url_for('static', filename='js/plugins/selectPlugin/plugin.js') }}"></script>

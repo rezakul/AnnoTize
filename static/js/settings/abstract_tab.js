@@ -12,6 +12,8 @@ class AbstractSettingsTab {
   /**
    * Closes the menu.
    * Save data if needed.
+   * 
+   * @param {boolean} cmf true if menu is closed, false if only tab is closed/switched
    */
-  close() {  }
+  close(cmf) {  }
 }

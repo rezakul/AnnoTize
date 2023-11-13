@@ -2,6 +2,7 @@ class IndexView {
   #documents;
   #documentFileNames;
   #runtimes;
+  #TEIConverter;
 
   #configuration;
 
@@ -9,6 +10,7 @@ class IndexView {
     this.#documents = [];
     this.#documentFileNames = [];
     this.#runtimes = [];
+    this.#TEIConverter = new CETEI();
     document.body.style.backgroundColor = "#b3c6f0";
     // init functions
     this.#init();
@@ -33,29 +35,44 @@ class IndexView {
     /* --------------- handle html upload (+ config) -------------- */
 
     const fileHandler = (file, name, type) => {
-      if (type !== "text/html" && type !== "application/json") {
+      if (type !== "text/html" && type !== "application/json" && type !== "text/xml") {
         //File Type Error
-        error.innerText = "Please upload a html file";
+        error.innerText = "Please upload a html (or xml) file";
         return false;
       }
       if (type === "application/json") {
         configFileHandler(file, name, type);
         return;
       }
+      // reset error
       error.innerText = "";
+      // load file
       let reader = new FileReader();
       reader.readAsText(file);
       reader.onloadend = () => {
-        // save the html content of the loaded file
-        const doc = document.createElement('html');
-        doc.innerHTML = reader.result;
-        const body = doc.getElementsByTagName('body')[0];
-        if (!body) {
-          console.error('No body tag in html document found...');
-          error.innerText = "Please upload a html file";
-          return false;
+        if (type === "text/html") {
+          // save the html content of the loaded file
+          const doc = document.createElement('html');
+          doc.innerHTML = reader.result;
+          const body = doc.getElementsByTagName('body')[0];
+          if (!body) {
+            console.error('No body tag in html document found...');
+            error.innerText = "Please upload a html file";
+            return false;
+          }
+          body.dataset.doctype = "html";
+          this.#documents.push(body);
+        } else {
+          let body;
+          body = document.createElement('body');
+          body.dataset.doctype = "xml";
+          this.#TEIConverter.makeHTML5(reader.result, (data) => {
+            data.style.marginLeft = "25px";
+            body.appendChild(data);
+            this.#documents.push(body);
+          });
         }
-        this.#documents.push(body);
+        
         // save file name
         this.#documentFileNames.push(name);
         // show the name of the loaded file to the user
@@ -74,6 +91,7 @@ class IndexView {
       preview.innerHTML = "";
       // reset loaded documents
       this.#documents = [];
+      this.#documentFileNames = [];
       // disable confirm button + reset
       confirm.disabled = true;
       this.#positionSelectionDiv();
@@ -228,11 +246,13 @@ class IndexView {
   #createRuntimes(config) {
     const nrDocs = this.#documents.length;
     for (let i = 0; i < nrDocs; ++i) {
-      let runtimeConfig;
+      let runtimeConfig, teiConv;
       if (config) {
         runtimeConfig = config.files.get(this.#documentFileNames[i]);
+        teiConv = config.conversion.get(runtimeConfig.id)
       }
-      let newRuntime = new AnnotationRuntime(window.location.href, false, runtimeConfig);
+
+      let newRuntime = new AnnotationRuntime(window.location.href, false, runtimeConfig, teiConv);
       if (nrDocs > 1) {
         newRuntime.sidebar.addDocumentNavigator(i + 1, nrDocs);
       }
@@ -271,10 +291,12 @@ class IndexView {
     // setup runtime
     runtime = this.#runtimes[number-1];
     runtime.activate();
+    /*
     window.onresize = (event) => {
       document.body.style.removeProperty('width');
       document.body.style.width = document.body.clientWidth - 425 + 'px';
     }
+    */
   }
 
   #confirm() {

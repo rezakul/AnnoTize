@@ -101,9 +101,7 @@ button.confirm-upload:not(:disabled):hover {
     position: absolute;
     transform: translate(-50%, -50%);
     left: 50%;
-    top: 15px;
     text-align: center;
-    font-size: 50px;
 }
 
 label.root-label-config {

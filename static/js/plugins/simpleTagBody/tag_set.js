@@ -294,6 +294,17 @@ class Tag {
   }
 
   /**
+   * Event handler to display the tag information
+   * @param {Event} event the triggered event with the 'tagId' dataset attribute
+   */
+  displayTagInformation(event) {
+    // get tag from event
+    const tag = tagSetPlugin.getTagForId(event.target.dataset.tagId);
+    // open settings menu
+    runtime.settings.displayTag(tag);
+  }
+
+  /**
    * Renders the tag as a html element.
    * @returns {Node} the tag as a html Node
    */
@@ -319,7 +330,7 @@ class Tag {
     }
     button.dataset.tagId = this.id;
   
-    button.addEventListener('click', runtime.showTagInformation);
+    button.addEventListener('click', this.displayTagInformation);
     return button;
   }
 }

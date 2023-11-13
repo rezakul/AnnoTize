@@ -60,6 +60,8 @@ class AnnotationStyleRectangle extends AnnotationStyle {
     preview = super.preview();
     
     preview.style.border = "2px solid orange";
+    preview.style.paddingLeft = "5px";
+    preview.style.width = "40%";
     preview.textContent = "Rectangle";
     return preview;
   }

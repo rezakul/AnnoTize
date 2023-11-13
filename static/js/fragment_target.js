@@ -162,10 +162,11 @@ class PathSelector extends Selector {
    * @returns {object} (JSON) stringifyable object
    */
   toJSON(key) {
+    var regex = /\/\*/g;
     let json = {};
     json.type = "PathSelector";
-    json.startPath = this.startPath;
-    json.endPath = this.endPath;
+    json.startPath = this.startPath.replace(regex, '');
+    json.endPath = this.endPath.replace(regex, '');
     return json;
   }
 }

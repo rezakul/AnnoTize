@@ -6,6 +6,7 @@ class Parser {
     let tags = [];
     let documents = [];
     let files = new Map();
+    let conversionInfo = new Map();
     for (let elem of config) {
       if (elem.type === "Configuration") {
         baseConfig = elem;
@@ -15,6 +16,8 @@ class Parser {
         concepts = elem;
       } else if (elem.type === "TagSet" || elem.type === "Tag") {
         tags.push(elem);
+      } else if (elem.type = "xmlConversionInfo") {
+        conversionInfo.set(elem.document, elem.conversions);
       }
     }
     if (!baseConfig || !documents) {
@@ -31,6 +34,7 @@ class Parser {
     result.files = files;
     result.concepts = concepts;
     result.tags = tags;
+    result.conversion = conversionInfo;
     return result;
   }
   
@@ -74,14 +78,6 @@ function fileReaderEvent(event) {
       if (!validElement(element)) {
         continue;
       }
-
-      /*
-      for (let plugin of runtime.plugins.values()) {
-        if (plugin.informAboutImport(element.type)) {
-          plugin.importFromJSON(element);
-        }
-      }
-      */
 
       switch (element.type) {
         case "Annotation":
@@ -194,20 +190,7 @@ function addAnnotationFromJSON(annotations, annotationFragments) {
       runtime.initializeAnnotationValuesFromJSON(annotation);
     } catch (error) {
       console.error(error, annotation);
+      runtime.removeAnnotation(annotation.id);
     }
-    
   }
 }
-
-/**
- * startTime = new Date();
- * // TEST
-    endTime = new Date();
-    var timeDiff = endTime - startTime; //in ms
-    // strip the ms
-    if (timeDiff > 500) {
-      // get seconds 
-    var seconds = Math.round(timeDiff / 1000);
-    console.log(seconds + " seconds" + "  | " + timeDiff, annotation);
-    }
- */

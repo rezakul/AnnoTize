@@ -7,7 +7,7 @@ class AnnotationStyleText extends AnnotationStyle {
   #clickCallback;
 
   /**
-   * @param {SelectionObject} selection the selected text area object
+   * @param {TextHighlight} selection the selected text area object
    */
   constructor(selection, styleClassCSS) {
     super(selection);

@@ -208,8 +208,9 @@ class SettingsMenu {
   constructor () {
     this.#menu = null;
     this.#tabs.set('General', new GeneralTab());
-    this.#tabs.set('ABoSpecs', new ConceptsTab());
+    this.#tabs.set('ABoSpecs', new ABoSpecTab());
     this.#tabs.set('Rapid Mode', new RapidModeTab());
+    this.#tabs.set('TagSets', new TagSetTab());
     this.#tabs.set('Annotation Style', new StyleTab());
     // start with general tab
     this.#currentTab = 'General';
@@ -264,6 +265,14 @@ class SettingsMenu {
   }
 
   /**
+   * Get tab for tag set configuration
+   * @returns {TagSetTab}
+   */
+  get tagSetTab() {
+    return this.getTabById('TagSets');
+  }
+
+  /**
    * Get the tab for the id
    * @param {string} id 
    * @returns {AbstractSettingsTab | undefined}
@@ -295,11 +304,46 @@ class SettingsMenu {
       return;
     }
     for (let tab of this.tabClasses) {
-      tab.close();
+      tab.close(true);
     }
     document.body.removeChild(this.#menu);
     this.#menu = null;
     this.#currentTab = 'General';
+  }
+
+  openTagMenu() {
+    if (this.#menu) {
+      return;
+    }
+    // setup tag set tab
+    this.#currentTab = 'TagSets';
+    this.#menu = this.#createMenuSkeleton();
+    document.body.appendChild(this.#menu);
+  }
+
+  /**
+   * Opens the menu and displays the tag in the tag set tab.
+   * @param {Tag} tag the tag to display the information 
+   */
+  displayTag(tag) {
+    // setup tab
+    this.tagSetTab.setupDisplayTag(tag);
+    // open menu
+    this.openTagMenu();
+  }
+
+  quickTagSetCreation(callback) {
+    // setup tab
+    this.tagSetTab.setupQuickTagSetCreation(callback);
+    // open menu
+    this.openTagMenu();
+  }
+
+  quickTagCreation(tagSet, callback) {
+    // setup tab
+    this.tagSetTab.setupQuickTagCreation(tagSet, callback);
+    // open menu
+    this.openTagMenu();
   }
 
   /**
@@ -324,7 +368,7 @@ class SettingsMenu {
       return;
     }
     for (let tab of this.tabClasses) {
-      tab.close();
+      tab.close(true);
     }
     this.setContent(this.getTabById(this.#currentTab).createContent());
   }
@@ -346,7 +390,7 @@ class SettingsMenu {
     // show settings content
     tab = this.getTabById(event.currentTarget.dataset.tabId);
     // close current tab
-    this.getTabById(this.currentTab).close();
+    this.getTabById(this.currentTab).close(false);
     // save current tab
     this.currentTab = event.currentTarget.dataset.tabId;
     this.setContent(tab.createContent());
@@ -388,7 +432,7 @@ class SettingsMenu {
       let li, span;
       li = document.createElement('li');
       li.dataset.tabId = tab;
-      if (tab === 'General') {
+      if (tab === this.#currentTab) {
         li.classList.add('active');
       }
       li.addEventListener('click', event => this.#selectTabEvent(event));
