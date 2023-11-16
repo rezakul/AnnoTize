@@ -1,9 +1,10 @@
 class CustomSelect {
 
-  constructor() {
-
-  }
-
+  /**
+   * Set a value for the select menu without triggering an event.
+   * @param {HTMLDivElement} select the html select element
+   * @param {string} value the value to set
+   */
   static setValueWithoutEvent(select, value) {
     let list;
     if (!select.matches('.custom-select')) {
@@ -20,6 +21,13 @@ class CustomSelect {
     }
   }
 
+  /**
+   * Get a custom select menu.
+   * 
+   * @param {*} optionList the option list in the select menu
+   * @param {*} defaultValue the default value that should be initially selected
+   * @returns {HTMLDivElement} the custom select element
+   */
   static getCustomSelect(optionList, defaultValue) {
     let customSelect, defaultWrapper, i, ll, a, b, c;
     
@@ -86,38 +94,42 @@ class CustomSelect {
       /* when the select box is clicked, close any other select boxes,
       and open/close the current select box: */
       e.stopPropagation();
-      closeAllSelect(this);
+      CustomSelect.closeAllSelect(e, this);
       this.nextSibling.classList.toggle("select-hide");
       this.classList.toggle("select-arrow-active");
     });
     
     return customSelect;
   }
-}
 
-
-
-function closeAllSelect(elmnt) {
-  /*a function that will close all select boxes in the document,
-  except the current select box:*/
-  var x, y, i, xl, yl, arrNo = [];
-  x = document.getElementsByClassName("select-items");
-  y = document.getElementsByClassName("select-selected");
-  xl = x.length;
-  yl = y.length;
-  for (i = 0; i < yl; i++) {
-    if (elmnt == y[i]) {
-      arrNo.push(i)
-    } else {
-      y[i].classList.remove("select-arrow-active");
+/**
+ * Close all open select boxes in the document,
+ * except the the current select box.
+ * 
+ * @param {Event} event the triggered event
+ * @param {HTMLDivElement} elmnt the select element that is opened and was clicked
+ */
+  static closeAllSelect(event, elmnt) {
+    var x, y, i, xl, yl, arrNo = [];
+    x = document.getElementsByClassName("select-items");
+    y = document.getElementsByClassName("select-selected");
+    xl = x.length;
+    yl = y.length;
+    for (i = 0; i < yl; i++) {
+      if (elmnt == y[i]) {
+        arrNo.push(i)
+      } else {
+        y[i].classList.remove("select-arrow-active");
+      }
+    }
+    for (i = 0; i < xl; i++) {
+      if (arrNo.indexOf(i)) {
+        x[i].classList.add("select-hide");
+      }
     }
   }
-  for (i = 0; i < xl; i++) {
-    if (arrNo.indexOf(i)) {
-      x[i].classList.add("select-hide");
-    }
-  }
 }
-/*if the user clicks anywhere outside the select box,
-then close all select boxes:*/
-document.addEventListener("click", closeAllSelect);
+
+/* if the user clicks anywhere outside the select box,
+then close all select boxes: */
+document.addEventListener("click", CustomSelect.closeAllSelect);
