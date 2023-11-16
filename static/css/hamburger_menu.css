@@ -1,0 +1,47 @@
+.annotation-menu {
+    position: absolute;
+    right: 0;
+}
+
+.annotation-menu-button {
+    overflow: auto;
+}
+  
+.annotation-menu-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 250px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    top: 50px;
+    right: 0;
+    z-index: 95;
+}
+
+.menu-content-element {
+    overflow: auto;
+    cursor: pointer;
+}
+
+.menu-content-element:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.menu-content-element:hover .material-symbols-outlined {
+    cursor: pointer;
+    font-variation-settings:
+    'FILL' 1
+}
+
+.menu-content-element-text {
+    padding: 14px 10px 13px 10px;
+    text-decoration: none;
+    white-space:nowrap;
+    text-align: center;
+    font-size: 16px;
+    color: black;
+    float: left;
+}
+
+.show {display: block; z-index: 95;}

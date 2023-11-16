@@ -1,0 +1,64 @@
+.stripe-1 {
+    --hlColor: white;
+    color: black;
+    background: repeating-linear-gradient(
+      45deg,
+      white,
+      white 5px,
+      var(--hlColor) 5px,
+      var(--hlColor) 10px
+      /* #f5c71a 5px,
+      #f5c71a 10px */
+    );
+  }
+
+  [speech-bubble]{
+    --bbColor: grey;
+    --bbArrowSize: 1.5rem;
+    --bbArrowWidth: 1.5rem;
+    --bbBorderRadius: 0.25rem;
+    --bbPadding: 1rem;
+    background: var(--bbColor);
+    border-radius: var(--bbBorderRadius);
+    padding: var(--bbPadding);
+    position: relative;
+    cursor: pointer;
+  }
+  
+  [speech-bubble]::before{
+    content: ''; 
+    position: absolute;
+    background: var(--bbColor);
+  }
+  
+  [speech-bubble][ptop]   { margin-top: var(--bbArrowSize); }
+  
+  [speech-bubble][ptop]::before{
+    --width: calc(var(--bbArrowWidth) / 2 * 3);
+    height: var(--bbArrowSize);
+    width: var(--width);
+  }
+  
+  [speech-bubble][ptop]::before{
+    bottom: calc(100% - 2px);
+  }
+  
+  [speech-bubble][ptop][acenter]::before{
+    left: calc(50% - var(--width) / 2);
+    clip-path: polygon(12.5% 100%, 50% 0, 87.5% 100%)
+  }
+
+  [speech-bubble][pbottom],
+  [speech-bubble][ptop]{margin: 0}
+
+  [speech-bubble] { 
+    filter: drop-shadow(0px 0px 0.2rem black);
+    transition: transform 0.25s ease
+  }
+
+  [speech-bubble]:hover{
+    transform: scale(1.05);
+    filter: 
+    drop-shadow(0px 0px 0.2rem black)
+    drop-shadow(0px 0px 1rem var(--bbColor));
+  }

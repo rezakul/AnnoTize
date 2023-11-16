@@ -1,0 +1,212 @@
+/* ----------------------------- Settings Menu -------------------------------- */
+.app-settings {
+    display: block;
+    overflow: hidden;
+    z-index: 2;
+    position: fixed;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    background-color: #d0d0d0;
+    border-radius: 5px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.app-settings .app-header {
+    float: left;
+    width: 100%;
+    height: 35px;
+    background-color: #cdcccc;
+}
+
+.app-settings .app-header .close{
+    float: right;
+    font-size: 25px;
+    padding: 5px;
+}
+
+.app-settings .app-header .icon{
+    float: left;
+    font-size: 25px;
+    padding: 5px;
+}
+
+.app-settings .app-header .header-title{
+    float: left;
+    height: 20px;
+    font-size: 20px;
+    padding: 5px;
+    margin: 0;
+}
+
+.app-settings .app-nav {
+    float: left;
+    width: 20%;
+    height: calc(100% - 35px);
+    background-color: #c0c0c0;
+}
+
+.app-settings .app-nav ul {
+    list-style-type: none;
+    padding: 0 10px 0 10px;
+}
+
+.app-settings .app-nav li {
+    width: 100%;
+    padding: 10px 0 10px 0;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    background-color: #c0c0c0;
+    cursor: pointer;
+}
+
+.app-settings .app-nav li:hover {
+    filter: brightness(80%);
+}
+
+.app-settings .app-nav li.active {
+    background-color: #a9a9a9;
+}
+
+.app-settings .app-nav li span{
+    padding-left: 25px;
+}
+
+.app-settings .app-content {
+    float: left;
+    width: 80%;
+    height: calc(100% - 35px);
+    background-color: #f1f1f1;
+    overflow: auto;
+}
+
+/* ------------- Specific ----------------------- */
+.app-settings .app-content .settings-tab-content {
+    padding: 25px;
+}
+
+.app-settings .app-content .settings-tab-content .entry {
+    overflow: visible;
+    margin-bottom: 25px;
+}
+
+.app-settings .app-content .settings-tab-content .entry .description {
+    display: block;
+    float: left;
+    font-size: 17px;
+    width: 45%;
+}
+
+.app-settings .app-content .settings-tab-content .entry .switch {
+    float: left;
+}
+
+.app-settings .app-content .settings-tab-content .template {
+    background-color: white;
+    height: 400px;
+    overflow: auto;
+}
+
+
+.app-settings .app-content .settings-tab-tagset {
+    height: 100%;
+}
+
+.app-settings .app-content .settings-tab-tagset .entry-header {
+    height: 45px;
+    box-sizing: border-box;
+    background-color: rgba(0,0,0,.1);
+    border-bottom: 2px solid gray;
+}
+
+.app-settings .app-content .settings-tab-tagset .entry-header i {
+    font-size: 24px;
+}
+
+/* ----------------------------- Toggle Switch Start -------------------------------- */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 23px;
+  }
+  
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #afafaf;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 17px;
+    width: 17px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(17px);
+    -ms-transform: translateX(17px);
+    transform: translateX(17px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+/* ----------------------------- TagSet Tab -------------------------------- */
+.footer button {
+    padding: 12px 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: none;
+}
+
+.footer button:enabled:hover {
+    background-color: #c0c0c0;
+    cursor: pointer;
+}
+
+.footer .menu-create-save {
+    float: left;
+    margin-left: 35%;
+    background-color: #D9D9D9;
+}
+
+.footer .menu-create-cancel {
+    float: right;
+    margin-right: 35%;
+    background-color: #D9D9D9;
+}
