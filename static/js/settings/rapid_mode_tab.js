@@ -62,7 +62,7 @@ class RapidModeTab extends AbstractSettingsTab {
         }
       }
     }
-    if (settingsPlugin.options.useAnnotationTemplate) {
+    if (ATSettings.useAnnotationTemplate) {
       runtime.sidebar.selectTemplate(1, true);
     }
     this.#temporaryTemplates = undefined;
@@ -101,9 +101,9 @@ class RapidModeTab extends AbstractSettingsTab {
     div.appendChild(description);
     // callback for user input
     changeCallback = (event) => {
-      settingsPlugin.options.removeTrailingWhitespaces = event.currentTarget.checked;
+      ATSettings.removeTrailingWhitespaces = event.currentTarget.checked;
     }
-    toggle = this.#toggleSwitch(changeCallback, settingsPlugin.options.removeTrailingWhitespaces);
+    toggle = this.#toggleSwitch(changeCallback, ATSettings.removeTrailingWhitespaces);
     div.appendChild(toggle);
 
     return div;
@@ -122,9 +122,9 @@ class RapidModeTab extends AbstractSettingsTab {
     div.appendChild(description);
     // callback for user input
     changeCallback = (event) => {
-      settingsPlugin.options.showAnnotationPopup = !event.currentTarget.checked;
+      ATSettings.showAnnotationPopup = !event.currentTarget.checked;
     }
-    toggle = this.#toggleSwitch(changeCallback, !settingsPlugin.options.showAnnotationPopup);
+    toggle = this.#toggleSwitch(changeCallback, !ATSettings.showAnnotationPopup);
     div.appendChild(toggle);
 
     return div;
@@ -277,9 +277,9 @@ class RapidModeTab extends AbstractSettingsTab {
     // callback for user input
     changeCallback = (event) => {
       if (event.currentTarget.checked) {
-        settingsPlugin.options.currentTemplateNumber = 0;
+        ATSettings.currentTemplateNumber = 0;
       } else {
-        settingsPlugin.options.currentTemplateNumber = null;
+        ATSettings.currentTemplateNumber = null;
       }
       template.style.display = event.currentTarget.checked ? 'block' : 'none';
       if (event.currentTarget.checked) {
@@ -289,11 +289,11 @@ class RapidModeTab extends AbstractSettingsTab {
       }
       
     }
-    toggle = this.#toggleSwitch(changeCallback, settingsPlugin.options.useAnnotationTemplate);
+    toggle = this.#toggleSwitch(changeCallback, ATSettings.useAnnotationTemplate);
     div.appendChild(toggle);
     
     // template
-    template.style.display = settingsPlugin.options.useAnnotationTemplate ? 'block' : 'none';
+    template.style.display = ATSettings.useAnnotationTemplate ? 'block' : 'none';
     wrapper.appendChild(template);
 
     return wrapper;
@@ -312,9 +312,9 @@ class RapidModeTab extends AbstractSettingsTab {
     div.appendChild(description);
     // callback for user input
     changeCallback = (event) => {
-      settingsPlugin.options.updateInteractedAnnotationsWithClick = event.currentTarget.checked;
+      ATSettings.updateInteractedAnnotationsWithClick = event.currentTarget.checked;
     }
-    toggle = this.#toggleSwitch(changeCallback, settingsPlugin.options.updateInteractedAnnotationsWithClick);
+    toggle = this.#toggleSwitch(changeCallback, ATSettings.updateInteractedAnnotationsWithClick);
     div.appendChild(toggle);
 
     return div;

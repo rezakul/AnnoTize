@@ -95,25 +95,25 @@ class StyleTab extends AbstractSettingsTab {
 
     // style selection menu
     wrapper2 = document.createElement('div');
-    wrapper2.style.display = settingsPlugin.options.useImportAnnotationStyle ? 'block' : 'none';
+    wrapper2.style.display = ATSettings.useImportAnnotationStyle ? 'block' : 'none';
     wrapper2.setAttribute('class', 'settings-entry-wrapper');
     wrapper2.style.overflow = "visible";
     div.appendChild(wrapper2);
     // the style selection
     changeCallback = (event) => {
-      settingsPlugin.options.importAnnotationStyle = event.target.firstChild.getAttribute('value');
+      ATSettings.importAnnotationStyle = event.target.firstChild.getAttribute('value');
     }
     selection = this.#styleSelectionMenu(changeCallback);
     // set current import style
-    CustomSelect.setValueWithoutEvent(selection.lastChild, settingsPlugin.options.importAnnotationStyle);
+    CustomSelect.setValueWithoutEvent(selection.lastChild, ATSettings.importAnnotationStyle);
     // selection.classList.add('selection-item');
     wrapper2.appendChild(selection);
     // callback for user input
     changeCallback = (event) => {
-      settingsPlugin.options.useImportAnnotationStyle = event.currentTarget.checked;
+      ATSettings.useImportAnnotationStyle = event.currentTarget.checked;
       wrapper2.style.display = event.currentTarget.checked ? 'block' : 'none';
     }
-    toggle = this.#toggleSwitch(changeCallback, settingsPlugin.options.useImportAnnotationStyle);
+    toggle = this.#toggleSwitch(changeCallback, ATSettings.useImportAnnotationStyle);
     wrapper1.appendChild(toggle);
 
 
@@ -214,7 +214,7 @@ class StyleTab extends AbstractSettingsTab {
     th.textContent = "Overwritable";
 
 
-    for (let creator of settingsPlugin.options.creators.values()) {
+    for (let creator of ATSettings.creators.values()) {
       let tr;
       tr = this.#getCreatorListEnty(creator);
       table.appendChild(tr);
@@ -243,13 +243,13 @@ class StyleTab extends AbstractSettingsTab {
     wrapper.appendChild(description);
     // creator list
     list = this.#getCreatorsList();
-    list.style.display = settingsPlugin.options.useCreatorAnnotationStyle ? 'block' : 'none';
+    list.style.display = ATSettings.useCreatorAnnotationStyle ? 'block' : 'none';
     // callback for user input
     changeCallback = (event) => {
-      settingsPlugin.options.useCreatorAnnotationStyle = event.currentTarget.checked;
+      ATSettings.useCreatorAnnotationStyle = event.currentTarget.checked;
       list.style.display = event.currentTarget.checked ? 'block' : 'none';
     }
-    toggle = this.#toggleSwitch(changeCallback, settingsPlugin.options.useCreatorAnnotationStyle);
+    toggle = this.#toggleSwitch(changeCallback, ATSettings.useCreatorAnnotationStyle);
     wrapper.appendChild(toggle);
 
     div.appendChild(list);
@@ -260,7 +260,7 @@ class StyleTab extends AbstractSettingsTab {
     let tr, td, select, checkbox;
     let callback;
 
-    const concept = runtime.getConceptForName(conceptName);
+    const concept = runtime.getABoSpecForName(conceptName);
 
     tr = document.createElement('tr');
 
@@ -344,7 +344,7 @@ class StyleTab extends AbstractSettingsTab {
     th.textContent = "Overwritable";
 
 
-    for (let concept of runtime.conceptNames) {
+    for (let concept of runtime.abospecNames) {
       let tr;
       tr = this.#getAnnotationTypeListEnty(concept);
       table.appendChild(tr);
@@ -373,13 +373,13 @@ class StyleTab extends AbstractSettingsTab {
     wrapper.appendChild(description);
 
     list = this.#getAnnotationStyleList();
-    list.style.display = settingsPlugin.options.useTypeAnnotationStyle ? 'block' : 'none';
+    list.style.display = ATSettings.useTypeAnnotationStyle ? 'block' : 'none';
     // callback for user input
     changeCallback = (event) => {
-      settingsPlugin.options.useTypeAnnotationStyle = event.currentTarget.checked;
+      ATSettings.useTypeAnnotationStyle = event.currentTarget.checked;
       list.style.display = event.currentTarget.checked ? 'block' : 'none';
     }
-    toggle = this.#toggleSwitch(changeCallback, settingsPlugin.options.useTypeAnnotationStyle);
+    toggle = this.#toggleSwitch(changeCallback, ATSettings.useTypeAnnotationStyle);
     wrapper.appendChild(toggle);
 
     div.appendChild(list);
@@ -418,9 +418,9 @@ class StyleTab extends AbstractSettingsTab {
     // event change -> set runtime var
     tr.addEventListener('change', (event) => {
       if (event.target.firstChild.textContent === '1.') {
-        settingsPlugin.options.creatorPriority = true;
+        ATSettings.creatorPriority = true;
       } else {
-        settingsPlugin.options.creatorPriority = false;
+        ATSettings.creatorPriority = false;
       }
     })
     return tr;
@@ -472,7 +472,7 @@ class StyleTab extends AbstractSettingsTab {
     table.setAttribute('class', 'priority-table-list');
     div.appendChild(table);
 
-    if (settingsPlugin.options.creatorPriority) {
+    if (ATSettings.creatorPriority) {
       table.appendChild(this.#priorityCreatorEntry(1));
       table.appendChild(this.#priorityTypeEntry(2));
     } else {

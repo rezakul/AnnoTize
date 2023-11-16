@@ -222,24 +222,12 @@ class IndexView {
   }
 
   #parseConfiguration() {
+    let config;
     if (!this.#configuration) {
       return;
     }
-    let config = Parser.parseConfiguration(this.#configuration);
-    if (config.config) {
-      settingsPlugin.options.creator = config.config.creator;
-    }
-    if (config.tags) {
-      for (let elem of config.tags) {
-        tagSetPlugin.importFromJSON(elem);
-      }
-    }
-    if (config.concepts) {
-      conceptPlugin.removeAllConcepts();
-      for (let concept of config.concepts.concepts) {
-        conceptPlugin.addConcept(concept, true);
-      }
-    }
+    
+    config = Parser.parseConfiguration(this.#configuration);
     return config;
   }
 
@@ -248,10 +236,9 @@ class IndexView {
     for (let i = 0; i < nrDocs; ++i) {
       let runtimeConfig, teiConv;
       if (config) {
-        runtimeConfig = config.files.get(this.#documentFileNames[i]);
-        teiConv = config.conversion.get(runtimeConfig.id)
+        runtimeConfig = config.getDocumentForFileName(this.#documentFileNames[i]);
+        teiConv = config.getConversionForId(runtimeConfig.id);
       }
-
       let newRuntime = new AnnotationRuntime(window.location.href, false, runtimeConfig, teiConv);
       if (nrDocs > 1) {
         newRuntime.sidebar.addDocumentNavigator(i + 1, nrDocs);
@@ -265,7 +252,7 @@ class IndexView {
     for (let i = 0; i < nrDocs; ++i) {
       let conf;
       if (config) {
-        conf = config.files.get(this.#documentFileNames[i]);
+        conf = config.getDocumentForFileName(this.#documentFileNames[i]);
       }
       if (conf && conf.refinedBy) {
         if (conf.refinedBy.type !== "Sections") {
@@ -302,6 +289,10 @@ class IndexView {
   #confirm() {
     let config;
     config = this.#parseConfiguration();
+    if (config) {
+      // set the creator
+      ATSettings.creator = config.config.creator;
+    }
     this.#createRuntimes(config);
     this.#initializeDocumentBodys(config);
     this.#loadDocumentIntoBody(this.#documents[0]);

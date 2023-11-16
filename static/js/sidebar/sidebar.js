@@ -118,7 +118,7 @@ class AnnotationSidebar {
     // set sidebar
     document.body.appendChild(this.#sidebar);
     // update template menu
-    if (settingsPlugin.options.useAnnotationTemplate) {
+    if (ATSettings.useAnnotationTemplate) {
       this.showTemplateMenu();
       for (let i = 0; i < 5; ++i) {
         const ct = settingsPlugin.rapidTab.conceptTemplates[i];
@@ -128,7 +128,7 @@ class AnnotationSidebar {
           this.disableTemplateNumber(i+1);
         }
       }
-      this.selectTemplate(settingsPlugin.options.currentTemplateNumber + 1);
+      this.selectTemplate(ATSettings.currentTemplateNumber + 1);
     } else {
       this.hideTemplateMenu();
     }
@@ -459,7 +459,7 @@ class AnnotationSidebar {
       button.classList.remove('selected');
     }
     // set template number to 'unused'
-    settingsPlugin.options.currentTemplateNumber = -1; //MAGIC_TEMPLATE_NUMBER;
+    ATSettings.currentTemplateNumber = -1; //MAGIC_TEMPLATE_NUMBER;
   }
 
   selectTemplate(number, force=false) {
@@ -473,7 +473,7 @@ class AnnotationSidebar {
     }
     buttons[number-1].classList.add('selected');
     // set current template number
-    settingsPlugin.options.currentTemplateNumber = number - 1;
+    ATSettings.currentTemplateNumber = number - 1;
   }
 
   enableTemplateNumber(number) {

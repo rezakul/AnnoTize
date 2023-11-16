@@ -464,3 +464,5 @@ class SettingsMenu {
 }
 
 const settingsPlugin = new SettingsMenu();
+
+const ATSettings = new SettingsOptions();

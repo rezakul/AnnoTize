@@ -217,7 +217,7 @@ class SelectionPopup {
     }
 
     // remove tailing whitespace if enabled
-    if (settingsPlugin.options.removeTrailingWhitespaces) {
+    if (ATSettings.removeTrailingWhitespaces) {
       let text = range.toString();
       while (text.length > 1 && [' ', '\n'].includes(text[text.length - 1])) {
         // create selection in order (i.e left-to-right) regardless of actual selection direction
@@ -248,7 +248,7 @@ class SelectionPopup {
       runtime.addDiscontinuityHandler();
       return true;
     }
-    if (!settingsPlugin.options.showAnnotationPopup) {
+    if (!ATSettings.showAnnotationPopup) {
       // instantly annotate selection
       runtime.clickOnPopup();
       return true;

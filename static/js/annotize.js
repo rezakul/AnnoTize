@@ -83,7 +83,7 @@ class AnnotationRuntime {
       return;
     }
     // annotate xml
-    for (let conversion of this.#teiConversion) {
+    for (let conversion of this.#teiConversion.conversions) {
       let nodes = document.querySelectorAll('[data-origname="' + conversion.origName + '"]');
       for (let node of nodes) {
         // check that node is not in header
@@ -124,7 +124,7 @@ class AnnotationRuntime {
     style = AnnotationStyleMarker;
 
     // get concept of annotation
-    concept = this.getConceptForName(conversion.ABoSpec);
+    concept = this.getABoSpecForName(conversion.ABoSpec);
 
     // create body
     body = new TemplateBody(State.Display, concept.concept, true);
@@ -141,7 +141,7 @@ class AnnotationRuntime {
     for (let attr of conversion.attributes) {
       // TODO: without eval?
       let fn = eval(conversion.attributesConversion[attr]);
-      bodyValues[attr] = { value: fn(node.getAttribute(attr))};
+      bodyValues[attr] = fn(node.getAttribute(attr));
     }
     annotation.annotationBody.initializeValues(bodyValues);
     // show annotation in html and sidebar
@@ -209,12 +209,12 @@ class AnnotationRuntime {
     return this.#source;
   }
 
-  get conceptNames() {
-    return conceptPlugin.conceptNames;
+  get abospecNames() {
+    return ATABoSpecs.abospecNames;
   }
 
-  getConceptForName(concept) {
-    return conceptPlugin.getConceptForName(concept);
+  getABoSpecForName(concept) {
+    return ATABoSpecs.getABoSpecForName(concept);
   }
 
   /**
@@ -222,7 +222,7 @@ class AnnotationRuntime {
    * @returns {string}
    */
   get creator() {
-    return settingsPlugin.options.creator;
+    return ATSettings.creator;
   }
 
   /**
@@ -480,14 +480,14 @@ class AnnotationRuntime {
     value.id = annotationId;
     value.timestamp = Date.now();
     // set id with timestamp as last annotation for concept (overwrite old one)
-    conceptPlugin.setLastInteraction(concept, value, this.id);
+    ATABoSpecs.setLastInteraction(concept, value, this.id);
   }
 
   getLastInteractionWithConcept(concepts) {
     let result;
     for (let concept of concepts) {
       let tmp;
-      tmp = conceptPlugin.getLastInteraction(concept, this.id);
+      tmp = ATABoSpecs.getLastInteraction(concept, this.id);
       if (tmp && this.#annotations.has(tmp.id)) {
         if (!result || result.timestamp < tmp.timestamp) {
           result = tmp;
@@ -621,11 +621,11 @@ class AnnotationRuntime {
     
     
     // set default style
-    if (settingsPlugin.options.useCreatorAnnotationStyle) {
-      let creatorStyle = settingsPlugin.options.creators.get(this.creator).annotationStyle;
+    if (ATSettings.useCreatorAnnotationStyle) {
+      let creatorStyle = ATSettings.creators.get(this.creator).annotationStyle;
       style = this.getStyleForName(creatorStyle);
-    } else if (settingsPlugin.options.useTypeAnnotationStyle && settingsPlugin.options.useAnnotationTemplate && settingsPlugin.options.annotationTemplate) {
-      let concept = this.getConceptForName(settingsPlugin.options.annotationTemplate.name);
+    } else if (ATSettings.useTypeAnnotationStyle && ATSettings.useAnnotationTemplate && ATSettings.annotationTemplate) {
+      let concept = this.getABoSpecForName(ATSettings.annotationTemplate.name);
       style = this.#annotationStyles.get(concept.style);
       if (!style) {
         style = AnnotationStyleMarker;
@@ -634,8 +634,8 @@ class AnnotationRuntime {
       style = AnnotationStyleMarker;
     }
 
-    if (settingsPlugin.options.useAnnotationTemplate) {
-      body = new TemplateBody(State.Creation, settingsPlugin.options.annotationTemplate, settingsPlugin.options.showHeader);
+    if (ATSettings.useAnnotationTemplate) {
+      body = new TemplateBody(State.Creation, ATSettings.annotationTemplate, ATSettings.showHeader);
       // TODO: style
     } else {
       body = new TemplateBody(State.Creation);
@@ -652,7 +652,7 @@ class AnnotationRuntime {
     annotation.show();
 
     // save annotation if configured
-    if (settingsPlugin.options.saveOnCreation) {
+    if (ATSettings.saveOnCreation) {
       if (body.validState) {
         runtime.saveAnnotationEvent(null, annotation.id);
       }
@@ -841,7 +841,7 @@ class AnnotationRuntime {
   }
 
   #updateLastInteractedAnnotationOnClick(annotationId) {
-    if (!settingsPlugin.options.updateInteractedAnnotationsWithClick) {
+    if (!ATSettings.updateInteractedAnnotationsWithClick) {
       return;
     }
     let concept = this.getAnnotationForId(annotationId).conceptName;
@@ -1084,19 +1084,19 @@ class AnnotationRuntime {
     fragmentTarget = new FragmentTarget(fragment.id, fragment.source, selector);
     // get creator of the annotation
     creator = annotation.creator;
-    if (!settingsPlugin.options.creators.has(creator)) {
+    if (!ATSettings.creators.has(creator)) {
       let creatorObj;
       creatorObj = new Creator(creator);
-      settingsPlugin.options.creators.set(creator, creatorObj);
+      ATSettings.creators.set(creator, creatorObj);
     }
     // get concept of annotation
-    concept = this.getConceptForName(annotation.body.type);
+    concept = this.getABoSpecForName(annotation.body.type);
 
     // create body
     body = new TemplateBody(State.Display, concept.concept, true);
 
-    if (settingsPlugin.options.useImportAnnotationStyle) {
-      style = this.getStyleForName(settingsPlugin.options.importAnnotationStyle);
+    if (ATSettings.useImportAnnotationStyle) {
+      style = this.getStyleForName(ATSettings.importAnnotationStyle);
     } else {
       style = this.getStyleForName(this.getDefinedStyle(annotation.creator, concept));
     }
@@ -1237,7 +1237,7 @@ class AnnotationRuntime {
     for (let anno of runtime.annotations.values()) {
       let concept, currentStyle, definedStyle, overwritable;
       currentStyle = anno.styleClassName;
-      concept = runtime.getConceptForName(anno.conceptName);
+      concept = runtime.getABoSpecForName(anno.conceptName);
       definedStyle = runtime.getDefinedStyle(anno.creator, concept);
       if (definedStyle !== 'default' && currentStyle !== definedStyle) {
         let style;
@@ -1260,26 +1260,26 @@ class AnnotationRuntime {
     let style = 'default';
     
     // priority - change in the futur to make more elegant
-    if (settingsPlugin.options.creatorPriority) {
-      if (concept && settingsPlugin.options.useTypeAnnotationStyle) {
+    if (ATSettings.creatorPriority) {
+      if (concept && ATSettings.useTypeAnnotationStyle) {
         if (concept.style !== 'default') {
           style = concept.style;
         }
       }
-      if (creatorId && settingsPlugin.options.useCreatorAnnotationStyle) {
-        creator = settingsPlugin.options.creators.get(creatorId);
+      if (creatorId && ATSettings.useCreatorAnnotationStyle) {
+        creator = ATSettings.creators.get(creatorId);
         if (creator.annotationStyle !== 'default') {
           style = creator.annotationStyle;
         }
       }
     } else {
-      if (creatorId && settingsPlugin.options.useCreatorAnnotationStyle) {
-        creator = settingsPlugin.options.creators.get(creatorId);
+      if (creatorId && ATSettings.useCreatorAnnotationStyle) {
+        creator = ATSettings.creators.get(creatorId);
         if (creator.annotationStyle !== 'default') {
           style = creator.annotationStyle;
         }
       }
-      if (concept && settingsPlugin.options.useTypeAnnotationStyle) {
+      if (concept && ATSettings.useTypeAnnotationStyle) {
         if (concept.style !== 'default') {
           style = concept.style;
         }
@@ -1299,11 +1299,11 @@ class AnnotationRuntime {
     // default value: false
     overwriteProtected = false;
     if (creatorId) {
-      creator = settingsPlugin.options.creators.get(creatorId);
-      overwriteProtected = overwriteProtected || (settingsPlugin.options.useCreatorAnnotationStyle && !creator.annotationStyleOverwritable);
+      creator = ATSettings.creators.get(creatorId);
+      overwriteProtected = overwriteProtected || (ATSettings.useCreatorAnnotationStyle && !creator.annotationStyleOverwritable);
     }
     if (concept) {
-      overwriteProtected = overwriteProtected || (settingsPlugin.options.useTypeAnnotationStyle && !concept.styleOverwritable);
+      overwriteProtected = overwriteProtected || (ATSettings.useTypeAnnotationStyle && !concept.styleOverwritable);
     }
     return !overwriteProtected;
   }
