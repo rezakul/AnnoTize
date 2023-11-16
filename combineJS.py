@@ -1,3 +1,9 @@
+"""
+Combines all JavaScript (same for CSS) files into one global file for use as a plugin.
+Outputs the files as bundle.js and bundle.css
+"""
+
+# the order of the files is important for some dependencies
 files = [
          'static/js/annotation_body/annotation_body.js',
          'static/js/annotation_body/annotation_creation_body.js',
@@ -64,17 +70,20 @@ files = [
         ]
 
 
+# prefix so plugin is only loaded once
 prefix = "(() => {\n \
   if (window.hasRun) {\n \
     return;\n \
   }\n \
   window.hasRun = true;" 
 
+# postfix for prefix
 postfix = "})();"
 
 content = ""
 
 content += prefix
+# add content of js files
 for name in files:
     with open(name, 'r') as file:
         content += file.read()
