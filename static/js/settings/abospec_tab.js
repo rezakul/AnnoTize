@@ -12,10 +12,10 @@ class ABoSpecTab extends AbstractSettingsTab {
     content.appendChild(this.#importConcepts());
     content.appendChild(this.#showConcepts());
     content.appendChild(this.#removeAllConcepts());
-    // only register event listener once (can't be in constructor, because 'conceptPlugin' might not be initialized)
+    // only register event listener once (can't be in constructor, because 'ATABoSpecs' might not be initialized)
     if (this.#eventListenerInit === false) {
       // react to concept changes
-      conceptPlugin.emitter.addEventListener('conceptListChange', event => this.#conceptChange(event));
+      ATABoSpecs.emitter.addEventListener('conceptListChange', event => this.#conceptChange(event));
       this.#eventListenerInit = true;
     }
     return content;
@@ -43,7 +43,7 @@ class ABoSpecTab extends AbstractSettingsTab {
 
     button = document.createElement('button');
     button.setAttribute('class', 'settings-button');
-    button.addEventListener('click', event => conceptPlugin.uploadConcepts(event));
+    button.addEventListener('click', event => ATABoSpecs.uploadABoSpecs(event));
     icon = document.createElement('i');
     icon.setAttribute('class', 'material-symbols-outlined prevent-select settings-button-icon');
     icon.textContent = "upload";
@@ -59,7 +59,7 @@ class ABoSpecTab extends AbstractSettingsTab {
     let tr, td;
     let del;
 
-    let concept = runtime.getConceptForName(conceptName).concept;
+    let concept = runtime.getABoSpecForName(conceptName).concept;
 
     tr = document.createElement('tr');
 
@@ -82,7 +82,7 @@ class ABoSpecTab extends AbstractSettingsTab {
     del.setAttribute('class', 'material-symbols-outlined material-symbols-hover');
     // del.style.float = "right";
     del.textContent = "delete";
-    del.addEventListener("click", event => conceptPlugin.removeConcept(concept.name));
+    del.addEventListener("click", event => ATABoSpecs.removeABoSpec(concept.name));
     td.appendChild(del);
 
     return tr;
@@ -115,7 +115,7 @@ class ABoSpecTab extends AbstractSettingsTab {
     th.textContent = "Remove";
 
 
-    for (let concept of runtime.conceptNames) {
+    for (let concept of runtime.abospecNames) {
       let tr;
       tr = this.#getAnnotationTypeListEnty(concept);
       table.appendChild(tr);
@@ -188,7 +188,7 @@ class ABoSpecTab extends AbstractSettingsTab {
 
     button = document.createElement('button');
     button.setAttribute('class', 'settings-button');
-    button.addEventListener('click', event => conceptPlugin.removeAllConcepts(event));
+    button.addEventListener('click', event => ATABoSpecs.clearABoSpecs(event));
     icon = document.createElement('i');
     icon.setAttribute('class', 'material-symbols-outlined prevent-select settings-button-icon');
     icon.textContent = "delete";

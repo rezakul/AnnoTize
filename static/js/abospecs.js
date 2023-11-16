@@ -1,19 +1,23 @@
-class Concept {
+class ABoSpec {
   #style;
   #styleOverwritable;
-  #concept;
+  #abospec;
   #lastInteractedAnnotation;
   #color;
 
-  constructor(concept) {
-    this.#concept = concept;
-    if (concept.style !== undefined) {
-      this.#style = concept.style;
+  /**
+   * Create a new ABoSpec object
+   * @param {*} abospec 
+   */
+  constructor(abospec) {
+    this.#abospec = abospec;
+    if (abospec.style !== undefined) {
+      this.#style = abospec.style;
     } else {
       this.#style = 'default';
     }
-    if (concept.styleOverwritable !== undefined && this.#style !== 'default') {
-      this.#styleOverwritable = concept.styleOverwritable;
+    if (abospec.styleOverwritable !== undefined && this.#style !== 'default') {
+      this.#styleOverwritable = abospec.styleOverwritable;
     } else {
       this.#styleOverwritable = true;
     }
@@ -21,7 +25,7 @@ class Concept {
   }
 
   get concept() {
-    return this.#concept;
+    return this.#abospec;
   }
 
   get style() {
@@ -55,16 +59,16 @@ class Concept {
   }
 }
 
-class ConceptPlugin {
-  #concepts = new Map();
+class ABoSpecs {
+  #abospecs = new Map();
   #emitter;
   #lastInteracted = new Map();
 
   constructor() {
     // load default concepts
-    for (let concept of default_concepts) {
-      let newConcept = new Concept(concept);
-      this.#concepts.set(concept.name, newConcept);
+    for (let abospec of default_concepts) {
+      let abs = new ABoSpec(abospec);
+      this.#abospecs.set(abospec.name, abs);
     }
     // setup emitter
     this.#emitter = new EventTarget();
@@ -74,46 +78,46 @@ class ConceptPlugin {
     return this.#emitter;
   }
 
-  get conceptNames() {
-    return Array.from(this.#concepts.keys()).sort();
+  get abospecNames() {
+    return Array.from(this.#abospecs.keys()).sort();
   }
 
-  getConceptForName(concept) {
-    return this.#concepts.get(concept);
+  getABoSpecForName(name) {
+    return this.#abospecs.get(name);
   }
 
-  setLastInteraction(concept, value, id) {
+  setLastInteraction(name, value, id) {
     if (!this.#lastInteracted.has(id)) {
       let newRuntimeMap = new Map();
       this.#lastInteracted.set(id, newRuntimeMap);
     }
     const map = this.#lastInteracted.get(id);
-    map.set(concept, value);
+    map.set(name, value);
   }
 
-  getLastInteraction(concept, id) {
+  getLastInteraction(name, id) {
     if (!this.#lastInteracted.has(id)) {
       return undefined;
     }
-    return  this.#lastInteracted.get(id).get(concept);
+    return  this.#lastInteracted.get(id).get(name);
   }
 
-  addConcept(concept, suppressEvent=false) {
-    let newConcept = new Concept(concept);
-    this.#concepts.set(concept.name, newConcept);
+  addABoSpec(abospec, suppressEvent=false) {
+    let newConcept = new ABoSpec(abospec);
+    this.#abospecs.set(abospec.name, newConcept);
     if (!suppressEvent) {
       this.emitter.dispatchEvent(new CustomEvent("conceptListChange", {detail: {change: "add"}}));
     }
   }
 
-  removeConcept(concept) {
-    let res = this.#concepts.delete(concept);
+  removeABoSpec(abospec) {
+    let res = this.#abospecs.delete(abospec);
     this.emitter.dispatchEvent(new CustomEvent("conceptListChange", {detail: {change: "remove"}}));
     return res;
   }
 
-  removeAllConcepts() {
-    this.#concepts = new Map();
+  clearABoSpecs() {
+    this.#abospecs = new Map();
     this.emitter.dispatchEvent(new CustomEvent("conceptListChange", {detail: {change: "removeAll"}}));
   }
 
@@ -124,7 +128,7 @@ class ConceptPlugin {
       
     if (jsonObj.concepts) {
       for (let concept of jsonObj.concepts) {
-        this.addConcept(concept, true);
+        this.addABoSpec(concept, true);
       }
       this.emitter.dispatchEvent(new CustomEvent("conceptListChange", {detail: {change: "addMultiple"}}));
     }
@@ -146,7 +150,7 @@ class ConceptPlugin {
     }
   }
 
-  uploadConcepts(event) {
+  uploadABoSpecs(event) {
     let uploadAnchorNode;
 
     uploadAnchorNode = document.createElement('input');
@@ -160,4 +164,4 @@ class ConceptPlugin {
   }
 }
 
-const conceptPlugin = new ConceptPlugin();
+const ATABoSpecs = new ABoSpecs();

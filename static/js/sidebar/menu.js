@@ -45,7 +45,7 @@ class SidebarHamburgerMenu {
     wrapper.setAttribute('class', 'annotation-menu-content');
     wrapper.appendChild(SidebarHamburgerMenu.#createUpload());
     wrapper.appendChild(SidebarHamburgerMenu.#createDownload());
-    wrapper.appendChild(SidebarHamburgerMenu.#uploadConcepts());
+    wrapper.appendChild(SidebarHamburgerMenu.#uploadABoSpecs());
     wrapper.appendChild(SidebarHamburgerMenu.#createTagSetMenuButton());
     wrapper.appendChild(SidebarHamburgerMenu.#createSettingsButton());
     return wrapper;
@@ -108,11 +108,11 @@ class SidebarHamburgerMenu {
    * 
    * @returns {HTMLDivElement} concept upload entry
    */
-  static #uploadConcepts() {
+  static #uploadABoSpecs() {
     let upload, text, wrapper;
     wrapper = document.createElement('div');
     wrapper.setAttribute('class', 'menu-content-element');
-    wrapper.addEventListener("click", event => conceptPlugin.uploadConcepts(event));
+    wrapper.addEventListener("click", event => ATABoSpecs.uploadABoSpecs(event));
 
     upload = document.createElement('i');
     upload.setAttribute('class', 'material-symbols-outlined');

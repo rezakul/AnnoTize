@@ -85,7 +85,7 @@ class TemplateBody {
     if (concept !== undefined) {
       this.#initializeConcept(concept);
       // style setup
-      let conceptClass = runtime.getConceptForName(concept.name);
+      let conceptClass = runtime.getABoSpecForName(concept.name);
       this.#style = conceptClass.style;
       this.#styleOverwritable = conceptClass.styleOverwritable;
     }
@@ -98,7 +98,7 @@ class TemplateBody {
     if (state === State.Creation) {
       // react to changes in concepts -> remove once body is first saved
       this.#conceptChangeCallback = event => this.#handleConceptListChange(event);
-      conceptPlugin.emitter.addEventListener('conceptListChange', this.#conceptChangeCallback);
+      ATABoSpecs.emitter.addEventListener('conceptListChange', this.#conceptChangeCallback);
     }
   }
 
@@ -163,8 +163,8 @@ class TemplateBody {
     if (color) {
       return color;
     }
-    if (runtime.getConceptForName(this.#name)) {
-      return runtime.getConceptForName(this.#name).color;
+    if (runtime.getABoSpecForName(this.#name)) {
+      return runtime.getABoSpecForName(this.#name).color;
     } else {
       return "#FF5F1F";
     }
@@ -255,7 +255,7 @@ class TemplateBody {
     description.textContent = "Choose ABoSpec";
     select.appendChild(description);
     
-    for (let concept of runtime.conceptNames) {
+    for (let concept of runtime.abospecNames) {
       let option = document.createElement('option');
       option.setAttribute('value', concept);
       option.textContent = concept;
@@ -413,7 +413,7 @@ class TemplateBody {
 
   #setConceptEvent(event) {
     let oldStyle = this.#style;
-    const concept = runtime.getConceptForName(event.target.value);
+    const concept = runtime.getABoSpecForName(event.target.value);
     // save style
     this.#style = concept.style;
     this.#styleOverwritable = concept.styleOverwritable;
@@ -745,7 +745,7 @@ class TemplateBody {
     description.textContent = "Choose ABoSpec";
     select.appendChild(description);
     
-    for (let concept of runtime.conceptNames) {
+    for (let concept of runtime.abospecNames) {
       option = document.createElement('option');
       option.setAttribute('value', concept);
       option.textContent = concept;
@@ -912,7 +912,7 @@ class TemplateBody {
 
   #removeConceptChangeEventListener() {
     if (this.#conceptChangeCallback !== null) {
-      conceptPlugin.emitter.removeEventListener('conceptListChange', this.#conceptChangeCallback);
+      ATABoSpecs.emitter.removeEventListener('conceptListChange', this.#conceptChangeCallback);
       this.#conceptChangeCallback = null;
     }
   }
