@@ -26,10 +26,6 @@ class AnnotationRuntime {
   #selectAnnotationFromDocument = null;
   #selectAnnotationFromDocumentType;
 
-  #plugins = new Map();
-  #pluginImportBodyTypes = new Map();     /* Type: Map<string, AnnotationPlugin> */
-  #pluginAvailableTemplates = new Map();  /* Type: Map<string, AbstractTemplateBody> */
-
   #emitter;
 
   #lastFocus = null;
@@ -213,8 +209,8 @@ class AnnotationRuntime {
     return ATABoSpecs.abospecNames;
   }
 
-  getABoSpecForName(concept) {
-    return ATABoSpecs.getABoSpecForName(concept);
+  getABoSpecForName(name) {
+    return ATABoSpecs.getABoSpecForName(name);
   }
 
   /**
@@ -223,14 +219,6 @@ class AnnotationRuntime {
    */
   get creator() {
     return ATSettings.creator;
-  }
-
-  /**
-   * The registerd plugins.
-   * @returns {Map<string,AnnotationPlugin>}
-   */
-  get plugins() {
-    return this.#plugins;
   }
 
   get reselectAnnotation() {
@@ -243,14 +231,6 @@ class AnnotationRuntime {
 
   get settings() {
     return settingsPlugin;
-  }
-
-
-  /**
-   * TEMPORARY
-   */
-  get pluginImportBodyTypes() {
-    return this.#pluginImportBodyTypes;
   }
 
   getAnnotationType(annoType) {
@@ -333,68 +313,6 @@ class AnnotationRuntime {
       return;
     }
     this.#referenceArrows.delete(reference.id);
-  }
-
-  /*
-  getPlugin(name) {
-    if (!this.plugins.has(name)) {
-      console.error("Plugin not found: ", name);
-      return;
-    }
-    return this.plugins.get(name);
-  }
-  */
-
-  /**
-   * Get the template object for a given name
-   * @param {string} name the name of the template
-   * @returns {AbstractTemplateBody | undefined} the template if a valid name
-   */
-  getTemplateForName(name) {
-    let templateClass, templateObj;
-    if (!this.#pluginAvailableTemplates.has(name)) {
-      console.warn('No template with name present: ', name);
-      return;
-    }
-    templateClass = this.#pluginAvailableTemplates.get(name);
-    templateObj = new templateClass();
-    return templateObj;
-  }
-
-  getTemplateNameList() {
-    return Array.from(this.#pluginAvailableTemplates.keys()).sort();
-  }
-
-  /**
-   * Register a new template.
-   * @param {string} name the name of the template
-   * @param {AbstractTemplateBody} templateClass the class object to create a new template object
-   */
-  registerTemplate(name, templateClass) {
-    // template map: Map<string, AbstractTemplateBody>
-    if (this.#pluginAvailableTemplates.has(name)) {
-      console.warn('Template name already present: ', name);
-      return;
-    }
-    this.#pluginAvailableTemplates.set(name, templateClass);
-  }
-
-  /**
-   * Register a new Plugin.
-   * @param {AnnotationPlugin} instance the plugin instance
-   */
-  registerPlugin(instance) {
-    if (this.plugins.has(instance.name)) {
-      console.error("Plugin already loaded: ", instance.name);
-      return;
-    }
-    this.plugins.set(instance.name, instance);
-    for (let name of instance.importBodyNames) {
-      this.#pluginImportBodyTypes.set(name, instance);
-    }
-    if (instance.supportUserCreation) {
-      this.#annotationTypes.set(instance.userBodyName, instance.bodyClass);
-    }
   }
 
   /**
@@ -983,15 +901,6 @@ class AnnotationRuntime {
 
   #exportAdditionalBodyInformation() {
     let array = [];
-    /*
-    for (let plugin of this.plugins.values()) {
-      let res;
-      res = plugin.toJSON();
-      if (res) {
-        array = array.concat(res);
-      }
-    }
-    */
     let res = tagSetPlugin.toJSON();
     array = array.concat(res);
 
@@ -1319,13 +1228,6 @@ class AnnotationRuntime {
     }
   }
 }
-
-/*
-window.onresize = (event) => {
-  document.body.style.removeProperty('width');
-  document.body.style.width = document.body.clientWidth - 425 + 'px';
-}
-*/
 
 // set runtime in browser_plugin.js or index.js
 runtime = null;
